@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity,
 import React, { useState } from 'react';
 import { Dropdown } from 'react-native-element-dropdown';
 
-function SignUpScreen() {
+function SignUpScreen({ navigation }) {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   
@@ -23,7 +23,6 @@ function SignUpScreen() {
             style={[styles.dropdown]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
-            iconStyle={styles.iconStyle}
             data={data}
             maxHeight={300}
             labelField="label"
@@ -41,8 +40,12 @@ function SignUpScreen() {
         <TouchableOpacity style={styles.Btn} onPress={() => console.log("Button Pressed")}>
           <Text style={styles.Btntext}>Sign Up</Text>
         </TouchableOpacity>
-
-
+        <Text style={styles.subhead}>--------- or ---------</Text>
+        <View style={styles.imgcontainer}>
+          <Image style={styles.imgoption} source={require('../assets/google.png')}/>
+          <Image style={styles.imgoption} source={require('../assets/facebook.png')}/>
+        </View>
+        
       </ImageBackground>
   </ScrollView>
   )
@@ -57,9 +60,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#7A9966'
   },
   img: {
-    height: 732,
+    height: 650,
     flex: 1,
-    justifyContent: 'center',
+    paddingTop: 20,
   },
   mainhead: {
     color: '#FFA948',
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontSize: 18,
-    color: 'black'
+    color: '#D68C1C',
   },
   Btn: {
     backgroundColor: '#263A38',
@@ -110,7 +113,7 @@ const styles = StyleSheet.create({
     marginLeft: 55,
     padding: 6,
     borderRadius: 50,
-    marginBottom: 25
+    marginBottom: 17
   },
   Btntext: {
     fontSize: 30,
@@ -118,4 +121,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFA948'
   },
+  subhead: {
+    color: '#FFA948',
+    fontSize: 30,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  imgcontainer: {
+    flexDirection: 'row',
+    marginLeft: 120
+  },
+  imgoption: {
+    width: 40,
+    height: 40,
+    marginRight: 40,
+    marginTop: 20
+  }
 })
