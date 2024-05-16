@@ -25,7 +25,7 @@ function LogInScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.subhead}>--------- or ---------</Text>
+      <Text style={styles.subhead}>------------ or ------------</Text>
         <View style={styles.imgcontainer}>
           <Image style={styles.imgoption} source={require('../assets/google.png')}/>
           <Image style={styles.imgoption} source={require('../assets/facebook.png')}/>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#194D10',
     textDecorationLine: 'underline',
-    marginBottom: 20
+    marginBottom: 40
   },
   subhead: {
     color: '#FFA948',

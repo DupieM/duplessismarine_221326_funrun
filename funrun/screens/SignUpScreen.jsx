@@ -40,7 +40,7 @@ function SignUpScreen({ navigation }) {
         <TouchableOpacity style={styles.Btn} onPress={() => console.log("Button Pressed")}>
           <Text style={styles.Btntext}>Sign Up</Text>
         </TouchableOpacity>
-        <Text style={styles.subhead}>--------- or ---------</Text>
+        <Text style={styles.subhead}>------------ or ------------</Text>
         <View style={styles.imgcontainer}>
           <Image style={styles.imgoption} source={require('../assets/google.png')}/>
           <Image style={styles.imgoption} source={require('../assets/facebook.png')}/>
@@ -59,9 +59,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#7A9966'
   },
   img: {
-    height: 650,
+    height: 730,
     flex: 1,
     paddingTop: 20,
+    justifyContent: 'center'
   },
   mainhead: {
     color: '#FFA948',
