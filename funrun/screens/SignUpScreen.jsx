@@ -45,7 +45,6 @@ function SignUpScreen({ navigation }) {
           <Image style={styles.imgoption} source={require('../assets/google.png')}/>
           <Image style={styles.imgoption} source={require('../assets/facebook.png')}/>
         </View>
-        
       </ImageBackground>
   </ScrollView>
   )

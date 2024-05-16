@@ -3,6 +3,9 @@ import React from 'react'
 import { Link } from 'expo-router';
 
 function LogInScreen({ navigation }) {
+
+
+
   return (
     <ScrollView style={styles.container}>
       <Image source={require('../assets/background.png')}/>
@@ -17,7 +20,7 @@ function LogInScreen({ navigation }) {
         <Text style={styles.password}>Forgot Password?</Text>
       </View>
       <View>
-        <TouchableOpacity style={styles.Btn} onPress={() => console.log("Button Pressed")}>
+        <TouchableOpacity style={styles.Btn} onPress={() => navigation.navigate('Root')}>
           <Text style={styles.Btntext}>Log In</Text>
         </TouchableOpacity>
       </View>
