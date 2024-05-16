@@ -23,30 +23,12 @@ export default function App() {
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Login" component={LogInScreen}  options={{
-          headerStyle: {
-            backgroundColor: '#7A9966',
-          },
-          headerTintColor: '#FFA948',
-          headerTitleStyle: {
-            fontWeight: '800',
-          },
-        }}/>
-          <Stack.Screen name="SignUp" component={SignUpScreen} options={{
-          headerStyle: {
-            backgroundColor: '#7A9966',
-          },
-          headerTintColor: '#FFA948',
-          headerTitleStyle: {
-            fontWeight: '800',
-          },
-        }}/>
+          <Stack.Screen name="Login" component={LogInScreen}/>
+          <Stack.Screen name="SignUp" component={SignUpScreen}/>
         <Stack.Screen name="Root" component={Root}/>
         </Stack.Navigator>
       </NavigationContainer>
     </View>
-    // <LogInScreen/>
-    // <SignUpScreen/>
     
   );
 }

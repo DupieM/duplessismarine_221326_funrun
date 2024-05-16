@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   search: {
-    backgroundColor: '#D68C1C',
+    backgroundColor: '#FFBF60',
     height: 60,
     fontSize: 18,
     paddingLeft: 20,

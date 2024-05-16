@@ -16,9 +16,9 @@ function SignUpScreen({ navigation }) {
       <ImageBackground source={require('../assets/signup_bg.png')} style={styles.img}>
         <Text style={styles.mainhead}>Ready, Set, Go</Text>
         <View style={styles.searchfield}>
-          <TextInput style={styles.search} placeholder='Name' placeholderTextColor="#D68C1C"/>
-          <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#D68C1C"/>
-          <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#D68C1C"/>
+          <TextInput style={styles.search} placeholder='Name' placeholderTextColor="#00272E"/>
+          <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#00272E"/>
+          <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"/>
           <Dropdown
             style={[styles.dropdown]}
             placeholderStyle={styles.placeholderStyle}
@@ -56,7 +56,7 @@ export default SignUpScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#7A9966'
+    backgroundColor: '#B9E79C'
   },
   img: {
     height: 730,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   search: {
-    backgroundColor: '#194D10',
+    backgroundColor: '#FFBF60',
     height: 60,
     fontSize: 18,
     paddingLeft: 20,
@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     borderRadius: 30,
     width: '80%',
-    color: '#FFA948',
+    color: '#00272E',
     marginBottom: 15
   },
   dropdown: {
     height: 50,
-    backgroundColor: '#194D10',
+    backgroundColor: '#FFBF60',
     height: 60,
     width: '80%',
     borderRadius: 8,
@@ -101,11 +101,11 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 18,
-    color: '#D68C1C',
+    color: '#00272E',
   },
   selectedTextStyle: {
     fontSize: 18,
-    color: '#D68C1C',
+    color: '#00272E',
   },
   Btn: {
     backgroundColor: '#263A38',
