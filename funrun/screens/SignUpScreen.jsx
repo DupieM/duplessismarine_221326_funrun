@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   mainhead: {
-    color: '#FFA948',
+    color: '#194D10',
     fontSize: 50,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -109,20 +109,20 @@ const styles = StyleSheet.create({
   },
   Btn: {
     backgroundColor: '#263A38',
-    width: 240,
-    marginLeft: 55,
+    width: 200,
+    marginLeft: 85,
     padding: 6,
     borderRadius: 50,
     marginBottom: 17
   },
   Btntext: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: '900',
     textAlign: 'center',
     color: '#FFA948'
   },
   subhead: {
-    color: '#FFA948',
+    color: '#194D10',
     fontSize: 30,
     fontWeight: '500',
     textAlign: 'center',

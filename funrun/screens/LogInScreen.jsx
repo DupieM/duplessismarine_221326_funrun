@@ -4,8 +4,6 @@ import { Link } from 'expo-router';
 
 function LogInScreen({ navigation }) {
 
-
-
   return (
     <ScrollView style={styles.container}>
       <Image source={require('../assets/background.png')}/>
@@ -13,10 +11,10 @@ function LogInScreen({ navigation }) {
         <Text style={styles.mainhead}>Welcome</Text>
       </View>
       <View style={styles.searchfield}>
-        <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#D68C1C"/>
+        <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#00272E"/>
       </View>
       <View>
-        <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#D68C1C"/>
+        <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"/>
         <Text style={styles.password}>Forgot Password?</Text>
       </View>
       <View>
@@ -50,11 +48,11 @@ export default LogInScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#7A9966',
-    paddingTop: 0.5
+    backgroundColor: '#B9E79C',
+    paddingTop: 0.5,
   },
   mainhead: {
-    color: '#FFA948',
+    color: '#194D10',
     fontSize: 60,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   search: {
-    backgroundColor: '#194D10',
+    backgroundColor: '#D68C1C',
     height: 60,
     fontSize: 18,
     paddingLeft: 20,
@@ -73,7 +71,7 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     borderRadius: 30,
     width: '80%',
-    color: '#FFA948',
+    color: '#00272E',
   },
   password: {
     marginLeft: 50,
@@ -84,14 +82,14 @@ const styles = StyleSheet.create({
   },
   Btn: {
     backgroundColor: '#263A38',
-    width: 240,
-    marginLeft: 55,
+    width: 200,
+    marginLeft: 85,
     padding: 6,
     borderRadius: 50,
     marginBottom: 25
   },
   Btntext: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: '900',
     textAlign: 'center',
     color: '#FFA948'
@@ -112,7 +110,7 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   subhead: {
-    color: '#FFA948',
+    color: '#194D10',
     fontSize: 30,
     fontWeight: '500',
     textAlign: 'center',
