@@ -6,6 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CompetitionScreen from './screens/CompetitionScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import EntryScreen from './screens/EntryScreen';
+import ResultScreen from './screens/ResultScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -14,6 +17,9 @@ function Root() {
   return(
     <Tab.Navigator>
       <Tab.Screen name="Home" component={CompetitionScreen}/>
+      <Tab.Screen name="Entry" component={EntryScreen}/>
+      <Tab.Screen name="Results" component={ResultScreen}/>
+      <Tab.Screen name="Profile" component={ProfileScreen}/>
     </Tab.Navigator>
   ) 
 }
@@ -36,9 +42,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  navigation: {
-    backgroundColor: 'red',
-    fontSize: 10
   }
 });
