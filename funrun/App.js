@@ -15,12 +15,13 @@ const Tab = createBottomTabNavigator();
 
 function Root() {
   return(
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={CompetitionScreen}/>
-      <Tab.Screen name="Entry" component={EntryScreen}/>
-      <Tab.Screen name="Results" component={ResultScreen}/>
-      <Tab.Screen name="Profile" component={ProfileScreen}/>
-    </Tab.Navigator>
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Home" component={CompetitionScreen}/>
+        <Tab.Screen name="Entry" component={EntryScreen}/>
+        <Tab.Screen name="Results" component={ResultScreen}/>
+        <Tab.Screen name="Profile" component={ProfileScreen}/>
+      </Tab.Navigator>
+    
   ) 
 }
 
@@ -31,7 +32,7 @@ export default function App() {
         <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={LogInScreen}/>
           <Stack.Screen name="SignUp" component={SignUpScreen}/>
-        <Stack.Screen name="Root" component={Root}/>
+          <Stack.Screen name="Root" component={Root}/>
         </Stack.Navigator>
       </NavigationContainer>
     </View>

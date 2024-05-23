@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, Image, } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font';
 
@@ -11,40 +11,160 @@ function CompetitionScreen() {
       </View>
       <View style={styles.containerfive}>
             <View style={styles.course}>
-              <Text style={styles.mainhead}>???</Text>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.coursetwo}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
+            </View> 
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.coursethree}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.coursefour}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.coursefive}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.coursesix}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.courseseven}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
+            </View>         
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.courseeight}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.coursenine}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
-            <View style={styles.courseten}>
-              <Text style={styles.mainhead}>???</Text>
-            </View>
-            <View style={styles.courseeleven}>
-              <Text style={styles.mainhead}>???</Text>
-            </View>
-            <View style={styles.coursetwelve}>
-              <Text style={styles.mainhead}>???</Text>
+            <View style={styles.course}>
+              <Image
+                style={styles.courseimg} 
+                source={require('../assets/Course_1.jpg')}
+              />
+              <View style={styles.subcoursename}>
+                <Text style={styles.mainhead}>Name</Text>
+                <Image
+                  style={styles.courseimg2} 
+                  source={require('../assets/ticket_icon.png')}
+                />
+              </View>
             </View>
         </View>
     </ScrollView>
@@ -56,140 +176,57 @@ export default CompetitionScreen
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      backgroundColor: "#B9E79C"
+    flex: 1,
+    backgroundColor: "#B9E79C"
   },
   title: {
-      fontSize: 38,
-      fontWeight: 'bold',
-      color: "#194D10"
+    marginTop: 30,
+    fontSize: 38,
+    fontWeight: 'bold',
+    color: "#194D10",
+    textAlign: 'center'
   },
   subtitle: {
     fontSize: 28,
     fontWeight: '500',
-    color: "#023E48"
+    color: "#A64510",
+    textAlign: 'center'
   },
   containerfive: {
-    marginTop: 14,
+    marginTop: 25,
     marginBottom: 14,
-    marginLeft: 25,
+    marginLeft: 14,
     marginRight: 25,
-    height: 1320,
+    height: 1400,
     flexWrap: 'wrap'
   },
   mainhead: {
-    color: 'white',
+    color: '#FFECEC',
     fontSize: 25,
-    fontWeight: '600'
+    fontWeight: '600',
+    marginRight: 7
+  },
+  courseimg: {
+    height: 140,
+    width: 140,
+    borderRadius: 10,
+  },
+  courseimg2: {
+    height: 25,
+    width: 17,
+    marginTop: 5
+  },
+  subcoursename: {
+    flexDirection: 'row',
+    marginTop: 3
   },
   course: {
-    backgroundColor: 'red',
-    height: 200,
-    width: 145,
-    marginRight: 20,
-    marginBottom: 20,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13
+    backgroundColor: '#263A38',
+    height: 220,
+    width: 160,
+    marginRight: 13,
+    marginBottom: 13,
+    borderRadius: 15,
+    padding: 10,
   },
-  coursetwo: {
-    backgroundColor: 'darkred',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  coursethree: {
-    backgroundColor: 'orange',
-    height: 200,
-    width: 145,
-    marginBottom: 20,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13
-  },
-  coursefour: {
-    backgroundColor: 'darkorange',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  coursefive: {
-    backgroundColor: 'yellow',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  coursesix: {
-    backgroundColor: 'green',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  courseseven: {
-    backgroundColor: 'darkgreen',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  courseeight: {
-    backgroundColor: 'blue',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  coursenine: {
-    backgroundColor: 'darkblue',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20, 
-  },
-  courseten: {
-    backgroundColor: 'purple',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  courseeleven: {
-    backgroundColor: 'violet',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-  coursetwelve: {
-    backgroundColor: 'pink',
-    height: 200,
-    width: 145,
-    borderRadius: 26,
-    paddingTop: 20,
-    paddingLeft: 13,
-    marginBottom: 20,
-  },
-
 })
