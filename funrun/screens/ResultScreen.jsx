@@ -4,7 +4,7 @@ import React from 'react'
 function ResultScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Result Screen</Text>
+      <Text style={styles.title}>Results Board</Text>
     </View>
   )
 }
@@ -14,14 +14,14 @@ export default ResultScreen
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#151718"
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#B9E79C"
   },
   title: {
-      fontSize: 20,
+      fontSize: 38,
       fontWeight: 'bold',
-      color: "#ECEDEE"
+      color: "#194D10"
   }
 })

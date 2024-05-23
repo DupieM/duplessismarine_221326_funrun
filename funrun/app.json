@@ -27,6 +27,9 @@
     },
     "plugins": [
       "expo-font",
+        {
+          "fonts": ["path/to/file.ttf"]
+        },
       "expo-router"
     ]
   }
