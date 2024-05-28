@@ -8,16 +8,16 @@ function CompetitionScreen({navigation}) {
 
   const [courseItems, setCourseItems] = useState([])
 
-  useFocusEffect(
-    React.useCallback(() => {
-      // Do something when the screen is focused
-      handleGettingOfData()
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     // Do something when the screen is focused
+  //     handleGettingOfData()
 
-      return () => {
-        // Do something when the screen is unfocused
-      };
-    }, [])
-  );
+  //     return () => {
+  //       // Do something when the screen is unfocused
+  //     };
+  //   }, [])
+  // );
 
   const handleGettingOfData = async () => {
     var allCourses = await getMyCourseList()
@@ -171,7 +171,7 @@ function CompetitionScreen({navigation}) {
                 <View style={styles.course}>
                   <Image
                     style={styles.courseimg} 
-                    source={course.image}
+                    source={require('../assets/ticket_icon.png')}
                   />
                   <View style={styles.subcoursename}>
                     <Text style={styles.mainhead}>{course.name}</Text>

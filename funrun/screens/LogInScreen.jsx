@@ -1,8 +1,15 @@
 import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'expo-router';
+import { handleLogin } from '../services/authService';
 
 function LogInScreen({ navigation }) {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
+
+  // Login Function
+  const login = () => {handleLogin(email, password)}
 
   return (
     <ScrollView style={styles.container}>
@@ -11,14 +18,20 @@ function LogInScreen({ navigation }) {
         <Text style={styles.mainhead}>Welcome</Text>
       </View>
       <View style={styles.searchfield}>
-        <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#00272E"/>
+        <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#00272E"
+          onChangeText={newText => setEmail(newText)}
+          defaultValue={email}
+        />
       </View>
       <View>
-        <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"/>
+        <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"
+          onChangeText={newText => setPassword(newText)}
+          defaultValue={password}
+        />
         <Text style={styles.password}>Forgot Password?</Text>
       </View>
       <View>
-        <TouchableOpacity style={styles.Btn} onPress={() => navigation.navigate('Root')}>
+        <TouchableOpacity style={styles.Btn} onPress={login}>
           <Text style={styles.Btntext}>Log In</Text>
         </TouchableOpacity>
       </View>

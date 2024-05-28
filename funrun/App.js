@@ -9,33 +9,64 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import EntryScreen from './screens/EntryScreen';
 import ResultScreen from './screens/ResultScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import { useEffect, useState } from 'react';
+import { auth } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function Root() {
-  return(
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Home" component={CompetitionScreen}/>
-        <Tab.Screen name="Entry" component={EntryScreen}/>
-        <Tab.Screen name="Results" component={ResultScreen}/>
-        <Tab.Screen name="Profile" component={ProfileScreen}/>
-      </Tab.Navigator>
-    
-  ) 
-}
-
 export default function App() {
+
+  const [loggedIn, SetLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        SetLoggedIn(true)
+        console.log("User logged in... " + user.email)
+      } else {
+        SetLoggedIn(false)
+        console.log("No user logged in...")
+      }  
+    })
+
+    return unsubscribe
+
+  }, [])
+  
   return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Login" component={LogInScreen}/>
-          <Stack.Screen name="SignUp" component={SignUpScreen}/>
-          <Stack.Screen name="Root" component={Root}/>
-        </Stack.Navigator>
+    <>
+      {loggedIn ? (
+        <NavigationContainer>
+          <Tab.Navigator screenOptions={{ headerShown: false }}>
+            <Tab.Screen name="Home" component={CompetitionScreen}/>
+            <Tab.Screen name="Entry" component={EntryScreen}/>
+            <Tab.Screen name="Results" component={ResultScreen}/>
+            <Tab.Screen name="Profile" component={ProfileScreen}/>
+          </Tab.Navigator>
+        </NavigationContainer>
+      ) : (
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Login" component={LogInScreen}/>
+            <Stack.Screen name="SignUp" component={SignUpScreen}/>
+          </Stack.Navigator>
       </NavigationContainer>
-    </View>
+      )}
+    </>
+
+
+
+    // <View style={styles.container}>
+    //   <NavigationContainer>
+    //     <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
+    //       <Stack.Screen name="Login" component={LogInScreen}/>
+    //       <Stack.Screen name="SignUp" component={SignUpScreen}/>
+    //       <Stack.Screen name="Root" component={Root}/>
+    //     </Stack.Navigator>
+    //   </NavigationContainer>
+    // </View>
     
   );
 }
