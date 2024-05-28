@@ -12,11 +12,19 @@ import ProfileScreen from './screens/ProfileScreen';
 import { useEffect, useState } from 'react';
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useFonts } from 'expo-font';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+export const [fontsLoaded] = useFonts({
+  'Item':require('./assets/fonts/Itim-Regular.ttf'),
+  'PoetsenOne':require('./assets/fonts/PoetsenOne-Regular.ttf'),
+})
+
 export default function App() {
+
+  
 
   const [loggedIn, SetLoggedIn] = useState(false)
 

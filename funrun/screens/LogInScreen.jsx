@@ -65,12 +65,13 @@ const styles = StyleSheet.create({
     paddingTop: 0.5,
   },
   mainhead: {
+    fontFamily:'Item',
     color: '#194D10',
     fontSize: 60,
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 7,
-    marginBottom: 7
+    marginBottom: 7,
   },
   searchfield: {
     marginBottom: 15
