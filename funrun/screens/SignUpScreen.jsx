@@ -1,6 +1,8 @@
 import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, ImageBackground, } from 'react-native'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dropdown } from 'react-native-element-dropdown';
+import { handleSignin } from '../services/authService';
+import { createUserInformation } from '../services/DbService';
 
 function SignUpScreen({ navigation }) {
   const [value, setValue] = useState(null);
@@ -11,14 +13,61 @@ function SignUpScreen({ navigation }) {
     { label: 'Marshall', value: '2' }
   ]
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('')
+  const [role, setRole] = useState('')
+
+  //Sign up Function
+  const [isFormValid, setIsFormValid] = useState(false);
+    useEffect(() => {
+        // Check if all required fields are filled
+        if (name.trim() && role.trim()) {
+            setIsFormValid(true);
+        } else {
+            setIsFormValid(false);
+        }
+    }, [name, role]);
+
+    const signin = () => {
+      // handleCreation = async () => {
+      //   //Need to pass all our data to the function
+
+      //   //Make sure all the values have been entered - show error/disable button
+      //   if (!isFormValid) {
+      //       Alert.alert("Validation Error", "Please fill all the required fields.");
+      //       return;
+      //   }
+
+      //   var infos = {name, role}
+      //   var success = await createUserInformation(infos)
+      //   if(success){
+      //     navigation.navigate('Home')
+      //   } else {
+      //       //Validation why
+      //       Alert.alert("Error", "Failed to create bucket list item.");
+      //   }
+      // };
+      handleSignin(email, password);
+    }
+
   return (
     <ScrollView style={styles.container}>
       <ImageBackground source={require('../assets/signup_bg.png')} style={styles.img}>
         <Text style={styles.mainhead}>Ready, Set, Go</Text>
         <View style={styles.searchfield}>
-          <TextInput style={styles.search} placeholder='Name' placeholderTextColor="#00272E"/>
-          <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#00272E"/>
-          <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"/>
+          <TextInput style={styles.search} placeholder='Name' placeholderTextColor="#00272E"
+          onChangeText={newText => setName(newText)}
+          defaultValue={name}
+          />
+          <TextInput style={styles.search} placeholder='Email' placeholderTextColor="#00272E"
+            onChangeText={newText => setEmail(newText)}
+            defaultValue={email}
+          />
+          <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"
+            onChangeText={newText => setPassword(newText)}
+            defaultValue={password}
+          />
           <Dropdown
             style={[styles.dropdown]}
             placeholderStyle={styles.placeholderStyle}
@@ -37,7 +86,7 @@ function SignUpScreen({ navigation }) {
             }}
           />
         </View>
-        <TouchableOpacity style={styles.Btn} onPress={() => console.log("Button Pressed")}>
+        <TouchableOpacity style={styles.Btn} onPress={signin}>
           <Text style={styles.Btntext}>Sign Up</Text>
         </TouchableOpacity>
         <Text style={styles.subhead}>------------ or ------------</Text>
