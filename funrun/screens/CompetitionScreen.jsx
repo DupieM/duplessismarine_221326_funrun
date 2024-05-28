@@ -1,8 +1,30 @@
-import { StyleSheet, View, Text, ScrollView, Image, } from 'react-native'
-import React from 'react'
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity, SafeAreaView, } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font';
+import { getMyCourseList } from '../services/DbService';
+import { useFocusEffect } from '@react-navigation/native';
 
-function CompetitionScreen() {
+function CompetitionScreen({navigation}) {
+
+  const [courseItems, setCourseItems] = useState([])
+
+  useFocusEffect(
+    React.useCallback(() => {
+      // Do something when the screen is focused
+      handleGettingOfData()
+
+      return () => {
+        // Do something when the screen is unfocused
+      };
+    }, [])
+  );
+
+  const handleGettingOfData = async () => {
+    var allCourses = await getMyCourseList()
+    setCourseItems(allCourses)
+  }
+
+
   return (
     <ScrollView style={styles.container}>
       <View>
@@ -140,33 +162,32 @@ function CompetitionScreen() {
                 />
               </View>
             </View>
-            <View style={styles.course}>
-              <Image
-                style={styles.courseimg} 
-                source={require('../assets/Course_1.jpg')}
-              />
-              <View style={styles.subcoursename}>
-                <Text style={styles.mainhead}>Name</Text>
-                <Image
-                  style={styles.courseimg2} 
-                  source={require('../assets/ticket_icon.png')}
-                />
-              </View>
             </View>
-            <View style={styles.course}>
-              <Image
-                style={styles.courseimg} 
-                source={require('../assets/Course_1.jpg')}
-              />
-              <View style={styles.subcoursename}>
-                <Text style={styles.mainhead}>Name</Text>
-                <Image
-                  style={styles.courseimg2} 
-                  source={require('../assets/ticket_icon.png')}
-                />
-              </View>
-            </View>
-        </View>
+      {/* <View>
+        {
+          courseItems != [] ? (
+            courseItems.map((course, index) => (
+              <TouchableOpacity key={index} style={styles.containerfive}>
+                <View style={styles.course}>
+                  <Image
+                    style={styles.courseimg} 
+                    source={course.image}
+                  />
+                  <View style={styles.subcoursename}>
+                    <Text style={styles.mainhead}>{course.name}</Text>
+                    <Image
+                      style={styles.courseimg2} 
+                      source={require('../assets/ticket_icon.png')}
+                    />
+                  </View>
+                </View>
+              </TouchableOpacity>
+            ))
+          ) : (
+            <Text>No Items Found Yet</Text>
+          )
+        }
+        </View>   */}
     </ScrollView>
   )
 }
@@ -200,6 +221,15 @@ const styles = StyleSheet.create({
     height: 1400,
     flexWrap: 'wrap'
   },
+  // containerfive: {
+  //       backgroundColor: 'white',
+  //       padding: 15,
+  //       display: 'flex',
+  //       flexDirection: 'row',
+  //       alignItems: 'center',
+  //       justifyContent: 'space-between',
+  //       marginBottom: 10
+  // },
   mainhead: {
     color: '#FFECEC',
     fontSize: 25,
