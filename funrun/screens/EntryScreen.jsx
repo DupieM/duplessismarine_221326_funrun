@@ -5,7 +5,7 @@ import { createNewEntry } from '../services/DbService';
 function EntryScreen({ route, navigation }) {
 
   //Retrive the params from the competition screen
-  const { courseId, courseName, courseDescription } = route.params;
+  const { courseName, courseDescription } = route.params;
 
   //creating the entry
   const [course_name, setCourse_Name] = useState('')
