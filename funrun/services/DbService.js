@@ -1,5 +1,5 @@
 // Firestore functionality
-import { addDoc, collection, getDocs, query } from "firebase/firestore"
+import {  collection, addDoc, getDocs, orderBy, query } from "firebase/firestore"
 import { db } from "../firebase";
 
 //Create rest of user information from sign up page
@@ -21,16 +21,21 @@ export const getMyCourseList = async () => {
     var allCourses = [] //array that we want to return
 
     // Getting the data from Firestore
+    // var q = query( collection(db, "courses"), orderBy('name', "asc") )
     const querySnapshot = await getDocs(collection(db, "courses"));
     querySnapshot.forEach((doc) => {
         allCourses.push({...doc.data(), id: doc.id}); //push each docs' data to the array I wnat to return
-        console.log(doc.data())
+        // console.log(doc.data())
     });
 
+    // console.log(allCourses)
+
     return allCourses
+    
 }
 
 // Create Entry for Contestant
+
 
 // Create entry for time
 

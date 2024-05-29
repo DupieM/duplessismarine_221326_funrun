@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import EntryScreen from './screens/EntryScreen';
 import ResultScreen from './screens/ResultScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useFonts } from 'expo-font';
@@ -17,14 +17,12 @@ import { useFonts } from 'expo-font';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export const [fontsLoaded] = useFonts({
-  'Item':require('./assets/fonts/Itim-Regular.ttf'),
-  'PoetsenOne':require('./assets/fonts/PoetsenOne-Regular.ttf'),
-})
-
 export default function App() {
 
-  
+  const [fontsLoaded] = useFonts({
+    'Item':require('./assets/fonts/Itim-Regular.ttf'),
+    'PoetsenOne':require('./assets/fonts/PoetsenOne-Regular.ttf'),
+  })
 
   const [loggedIn, SetLoggedIn] = useState(false)
 

@@ -6,7 +6,7 @@ import { handleLogin } from '../services/authService';
 function LogInScreen({ navigation }) {
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState('');
 
   // Login Function
   const login = () => {handleLogin(email, password)}
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     paddingTop: 0.5,
   },
   mainhead: {
-    fontFamily:'Item',
     color: '#194D10',
     fontSize: 60,
     fontWeight: 'bold',

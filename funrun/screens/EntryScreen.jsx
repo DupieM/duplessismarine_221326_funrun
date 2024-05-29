@@ -1,16 +1,18 @@
 import { StyleSheet, View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-function EntryScreen() {
+function EntryScreen({ route, navigation }) {
+
+  //Retrive the params from the competition screen
+  const { courseId, courseName, courseDescription } = route.params;
+
+
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Course Name</Text>
+      <Text style={styles.title}>{JSON.stringify(courseName)}</Text>
       <View style={styles.infobox}>
         <Text style={styles.subhead}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-          ut aliquip ex ea commodo consequat. 
+          {JSON.stringify(courseDescription)} 
         </Text>
       </View>
       <Text style={styles.subtitle}>Enter Competition</Text>
@@ -54,11 +56,12 @@ const styles = StyleSheet.create({
     height: 167,
     width: 300,
     padding: 10,
-    marginLeft: 30
+    marginLeft: 30,
   },
   subhead: {
-    fontSize: 17,
-    color: "#A64510"
+    fontSize: 22,
+    color: "#A64510",
+    textAlign: 'center',
   },
   subtitle: {
     marginTop: 20,

@@ -16,18 +16,18 @@ function SignUpScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('')
-  const [role, setRole] = useState('')
+  // const [role, setRole] = useState('')
 
   //Sign up Function
   const [isFormValid, setIsFormValid] = useState(false);
     useEffect(() => {
         // Check if all required fields are filled
-        if (name.trim() && role.trim()) {
+        if (name.trim()) {
             setIsFormValid(true);
         } else {
             setIsFormValid(false);
         }
-    }, [name, role]);
+    }, [name]);
 
     const signin = () => {
       // handleCreation = async () => {
