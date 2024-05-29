@@ -35,7 +35,17 @@ export const getMyCourseList = async () => {
 }
 
 // Create Entry for Contestant
-
+export const createNewEntry = async (entry) => {
+    try {
+        //docRef - our reference to our newly created document (brand new with a self-generated ID)
+        const docRef = await addDoc(collection(db, "entries"), entry);
+        console.log("Document written with ID: ", docRef.id);
+        return true
+    } catch (e) {
+        console.error("Error adding document: ", e);
+        return false
+    }
+}
 
 // Create entry for time
 
