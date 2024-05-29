@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
     marginBottom: 14,
     marginLeft: 7,
     marginRight: 5,
-    height: 500,
+    height: 1100,
     flexWrap: 'wrap'
   },
   course: {
     backgroundColor: '#263A38',
-    height: 190,
+    height: 210,
     width: 160,
     marginRight: 3,
     marginBottom: 10,
