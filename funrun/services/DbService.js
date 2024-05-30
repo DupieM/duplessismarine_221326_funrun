@@ -6,7 +6,7 @@ import { db } from "../firebase";
 export const createUserInformation = async (info) => {
     try {
         //docRef - our reference to our newly created document (brand new with a self-generated ID)
-        const docRef = await addDoc(collection(db, "users"), info);
+        await addDoc(collection(db, "users"), info);
         console.log("Document written with ID: ", docRef.id);
         return true
     } catch (e) {

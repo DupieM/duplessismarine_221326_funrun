@@ -16,7 +16,7 @@ function SignUpScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('')
-  // const [role, setRole] = useState('')
+  const [role, setRole] = useState('')
 
   //Sign up Function
   const [isFormValid, setIsFormValid] = useState(false);
@@ -30,24 +30,24 @@ function SignUpScreen({ navigation }) {
     }, [name]);
 
     const signin = () => {
-      // handleCreation = async () => {
-      //   //Need to pass all our data to the function
+      handleCreation = async () => {
+        //Need to pass all our data to the function
 
-      //   //Make sure all the values have been entered - show error/disable button
-      //   if (!isFormValid) {
-      //       Alert.alert("Validation Error", "Please fill all the required fields.");
-      //       return;
-      //   }
+        //Make sure all the values have been entered - show error/disable button
+        if (!isFormValid) {
+            Alert.alert("Validation Error", "Please fill all the required fields.");
+            return;
+        }
 
-      //   var infos = {name, role}
-      //   var success = await createUserInformation(infos)
-      //   if(success){
-      //     navigation.navigate('Home')
-      //   } else {
-      //       //Validation why
-      //       Alert.alert("Error", "Failed to create bucket list item.");
-      //   }
-      // };
+        var infos = {name, role}
+        var success = await createUserInformation(infos)
+        if(success){
+          navigation.navigate('Home')
+        } else {
+            //Validation why
+            Alert.alert("Error", "Failed to create bucket list item.");
+        }
+      };
       handleSignin(email, password);
     }
 
@@ -83,6 +83,7 @@ function SignUpScreen({ navigation }) {
             onChange={item => {
               setValue(item.value);
               setIsFocus(false);
+              setRole(item);
             }}
           />
         </View>
