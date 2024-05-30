@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useFonts } from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,7 +21,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    'Item':require('./assets/fonts/Itim-Regular.ttf'),
+    'Itim':require('./assets/fonts/Itim-Regular.ttf'),
     'PoetsenOne':require('./assets/fonts/PoetsenOne-Regular.ttf'),
   })
 
@@ -46,7 +47,13 @@ export default function App() {
       {loggedIn ? (
         <NavigationContainer>
           <Tab.Navigator screenOptions={{ headerShown: false }}>
-            <Tab.Screen name="Home" component={CompetitionScreen}/>
+            <Tab.Screen name="Home" component={CompetitionScreen}
+            options={{
+              tabBarLabel: 'Home',
+              tabBarIcon: ({}) =>  (
+                <Ionicons name="home" color={'blue'} size={27} />
+              )
+            }}/>
             <Tab.Screen name="Entry" component={EntryScreen}/>
             <Tab.Screen name="Results" component={ResultScreen}/>
             <Tab.Screen name="Profile" component={ProfileScreen}/>

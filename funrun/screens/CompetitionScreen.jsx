@@ -66,13 +66,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#B9E79C"
   },
   title: {
+    fontFamily:'Itim',
     marginTop: 30,
     fontSize: 38,
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: "#194D10",
     textAlign: 'center'
   },
   subtitle: {
+
     fontSize: 28,
     fontWeight: '500',
     color: "#A64510",

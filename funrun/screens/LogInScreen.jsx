@@ -27,6 +27,7 @@ function LogInScreen({ navigation }) {
         <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"
           onChangeText={newText => setPassword(newText)}
           defaultValue={password}
+          secureTextEntry={true}
         />
         <Text style={styles.password}>Forgot Password?</Text>
       </View>
