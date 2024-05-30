@@ -29,27 +29,46 @@ function SignUpScreen({ navigation }) {
         }
     }, [name]);
 
-    const signin = () => {
-      handleCreation = async () => {
-        //Need to pass all our data to the function
+    const handleCreation = async () => {
+      //Need to pass all our data to the function
 
-        //Make sure all the values have been entered - show error/disable button
-        if (!isFormValid) {
-            Alert.alert("Validation Error", "Please fill all the required fields.");
-            return;
-        }
+      //Make sure all the values have been entered - show error/disable button
+      if (!isFormValid) {
+          Alert.alert("Validation Error", "Please fill all the required fields.");
+          return;
+      }
 
-        var infos = {name, role}
-        var success = await createUserInformation(infos)
-        if(success){
-          navigation.navigate('Home')
-        } else {
-            //Validation why
-            Alert.alert("Error", "Failed to create bucket list item.");
-        }
-      };
-      handleSignin(email, password);
-    }
+      var infos = {name, role, email, password}
+      var success = await createUserInformation(infos)
+      if(success){
+        handleSignin(email, password);
+      } else {
+          //Validation why
+          Alert.alert("Error", "Failed to create bucket list item.");
+      }
+    };
+
+    // const signin = () => {
+    //   handleCreation = async () => {
+    //     //Need to pass all our data to the function
+
+    //     //Make sure all the values have been entered - show error/disable button
+    //     if (!isFormValid) {
+    //         Alert.alert("Validation Error", "Please fill all the required fields.");
+    //         return;
+    //     }
+
+    //     var infos = {name, role, email, password}
+    //     var success = await createUserInformation(infos)
+    //     if(success){
+    //       navigation.navigate('Home')
+    //     } else {
+    //         //Validation why
+    //         Alert.alert("Error", "Failed to create bucket list item.");
+    //     }
+    //   };
+    //   handleSignin(email, password);
+    // }
 
   return (
     <ScrollView style={styles.container}>
@@ -83,11 +102,11 @@ function SignUpScreen({ navigation }) {
             onChange={item => {
               setValue(item.value);
               setIsFocus(false);
-              setRole(item);
+              setRole(item.value);
             }}
           />
         </View>
-        <TouchableOpacity style={styles.Btn} onPress={signin}>
+        <TouchableOpacity style={styles.Btn} onPress={handleCreation}>
           <Text style={styles.Btntext}>Sign Up</Text>
         </TouchableOpacity>
         <Text style={styles.subhead}>------------ or ------------</Text>
