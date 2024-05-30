@@ -9,7 +9,7 @@ function CompetitionScreen({ navigation }) {
 
   useEffect(() => { //only running on first load, but when naviagting back doesn't rereander
         handleGettingOfData()
-    }, [])
+  }, [])
 
   const handleGettingOfData = async () => {
     var allData = await getMyCourseList()

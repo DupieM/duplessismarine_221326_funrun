@@ -37,7 +37,6 @@ function EntryScreen({ route, navigation }) {
     var success = await createNewEntry(entries)
     if(success){
       Alert.alert("Success", "You have entered the comopetition successfully");
-      navigation.goBack()
     } else {
         //Validation why
         Alert.alert("Error", "Failed to create bucket list item.");

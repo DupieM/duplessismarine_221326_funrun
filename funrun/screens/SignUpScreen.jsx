@@ -9,8 +9,8 @@ function SignUpScreen({ navigation }) {
   const [isFocus, setIsFocus] = useState(false);
   
   const data = [
-    { label: 'Contestant', value: '1' },
-    { label: 'Marshall', value: '2' }
+    { label: 'Contestant', value: 'Contestant' },
+    { label: 'Marshall', value: 'Marshall' }
   ]
 
   const [email, setEmail] = useState('');
