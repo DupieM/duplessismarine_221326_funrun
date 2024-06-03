@@ -1,11 +1,11 @@
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 function ContestantScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Contestant Screen</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Contestants</Text>
+    </ScrollView>
   )
 }
 
@@ -14,14 +14,14 @@ export default ContestantScreen
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#151718"
+    flex: 1,
+    backgroundColor: "#B9E79C"
   },
   title: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: "#ECEDEE"
-  }
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: "#194D10",
+    textAlign: 'center',
+    marginTop: 30
+  },
 })

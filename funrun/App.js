@@ -54,15 +54,51 @@ export default function App() {
             options={{
               tabBarLabel: 'Home',
               tabBarIcon: ({}) =>  (
-                <Ionicons name="home" color={'blue'} size={27} />
+                <Ionicons name="home" color={'blue'} size={32} />
               )
             }}/>
-            {/* <Tab.Screen name="Entry" component={EntryScreen}/>
-            <Tab.Screen name="Results" component={ResultScreen}/>
-            <Tab.Screen name="Profile" component={ProfileScreen}/> */}
-            <Tab.Screen name="Contestant" component={ContestantScreen}/>
-            <Tab.Screen name="Judging" component={JudgingScreen}/>
-            <Tab.Screen name="Management" component={ManagementScreen}/>
+            {/* <Tab.Screen name="Entry" component={EntryScreen}
+            options={{
+              tabBarLabel: 'Enter',
+              tabBarIcon: ({}) =>  (
+                <Ionicons name="enter" color={'blue'} size={32} />
+              )
+            }}/>
+            <Tab.Screen name="Results" component={ResultScreen}
+            options={{
+              tabBarLabel: 'Results',
+              tabBarIcon: ({}) =>  (
+                <Ionicons name="trophy" color={'blue'} size={32} />
+              )
+            }}/>
+            <Tab.Screen name="Profile" component={ProfileScreen}
+            options={{
+              tabBarLabel: 'Profile',
+              tabBarIcon: ({}) =>  (
+                <Ionicons name="person" color={'blue'} size={32} />
+              )
+            }}/> */}
+            <Tab.Screen name="Contestant" component={ContestantScreen}
+            options={{
+              tabBarLabel: 'Contestant',
+              tabBarIcon: ({}) =>  (
+                <Ionicons name="people" color={'blue'} size={32} />
+              )
+            }}/>
+            <Tab.Screen name="Judging" component={JudgingScreen}
+            options={{
+              tabBarLabel: 'Judging',
+              tabBarIcon: ({}) =>  (
+                <Ionicons name="time" color={'blue'} size={32} />
+              )
+            }}/>
+            <Tab.Screen name="Management" component={ManagementScreen}
+            options={{
+              tabBarLabel: 'Management',
+              tabBarIcon: ({}) =>  (
+                <Ionicons name="clipboard" color={'blue'} size={32} />
+              )
+            }}/>
           </Tab.Navigator>
         </NavigationContainer>
       ) : (

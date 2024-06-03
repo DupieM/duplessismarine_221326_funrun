@@ -86,6 +86,7 @@ function SignUpScreen({ navigation }) {
           <TextInput style={styles.search} placeholder='Password' placeholderTextColor="#00272E"
             onChangeText={newText => setPassword(newText)}
             defaultValue={password}
+            secureTextEntry={true}
           />
           <Dropdown
             style={[styles.dropdown]}
