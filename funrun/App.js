@@ -14,6 +14,9 @@ import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useFonts } from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import ContestantScreen from './screens/ContestantScreen';
+import JudgingScreen from './screens/JudgingScreen';
+import ManagementScreen from './screens/ManagementScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -54,9 +57,12 @@ export default function App() {
                 <Ionicons name="home" color={'blue'} size={27} />
               )
             }}/>
-            <Tab.Screen name="Entry" component={EntryScreen}/>
+            {/* <Tab.Screen name="Entry" component={EntryScreen}/>
             <Tab.Screen name="Results" component={ResultScreen}/>
-            <Tab.Screen name="Profile" component={ProfileScreen}/>
+            <Tab.Screen name="Profile" component={ProfileScreen}/> */}
+            <Tab.Screen name="Contestant" component={ContestantScreen}/>
+            <Tab.Screen name="Judging" component={JudgingScreen}/>
+            <Tab.Screen name="Management" component={ManagementScreen}/>
           </Tab.Navigator>
         </NavigationContainer>
       ) : (
@@ -68,18 +74,6 @@ export default function App() {
       </NavigationContainer>
       )}
     </>
-
-
-
-    // <View style={styles.container}>
-    //   <NavigationContainer>
-    //     <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
-    //       <Stack.Screen name="Login" component={LogInScreen}/>
-    //       <Stack.Screen name="SignUp" component={SignUpScreen}/>
-    //       <Stack.Screen name="Root" component={Root}/>
-    //     </Stack.Navigator>
-    //   </NavigationContainer>
-    // </View>
     
   );
 }
