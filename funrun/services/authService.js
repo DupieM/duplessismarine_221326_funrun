@@ -1,9 +1,10 @@
 // Firebase Auth Functions
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 // Log In
-export const handleLogin = (email, password) => {
+export const handleLogin = async (email, password) => {
 
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -17,6 +18,16 @@ export const handleLogin = (email, password) => {
       const errorMessage = error.message;
       console.log(errorMessage)
     });
+
+    var allUsers = []
+
+    const querySnapshot = await getDocs(collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+        allUsers.push({...doc.data(), id: doc.id}); //push each docs' data to the array I wnat to return
+        // console.log(doc.data())
+    });
+
+    return allUsers
 
 }
 
