@@ -19,16 +19,6 @@ export const handleLogin = async (email, password) => {
       console.log(errorMessage)
     });
 
-    var allUsers = []
-
-    const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
-        allUsers.push({...doc.data(), id: doc.id}); //push each docs' data to the array I wnat to return
-        // console.log(doc.data())
-    });
-
-    return allUsers
-
 }
 
 // Create an account

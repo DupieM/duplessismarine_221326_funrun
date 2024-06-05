@@ -17,6 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import ContestantScreen from './screens/ContestantScreen';
 import JudgingScreen from './screens/JudgingScreen';
 import ManagementScreen from './screens/ManagementScreen';
+import { collection, doc, getDoc } from 'firebase/firestore';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,16 +29,28 @@ export default function App() {
     'PoetsenOne':require('./assets/fonts/PoetsenOne-Regular.ttf'),
   })
 
-  const [loggedIn, SetLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        SetLoggedIn(true)
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setIsAdmin(userDoc.data().isAdmin);
+          console.log("Admin status: ", userDoc.data().isAdmin);
+        } else {
+          console.log("No such document!");
+          setIsAdmin(false);
+        }
+
+        setLoggedIn(true)
         console.log("User logged in... " + user.email)
-      } else {
-        SetLoggedIn(false)
+        
+      } else {l
+        setLoggedIn(false)
         console.log("No user logged in...")
+        setIsAdmin(false)
       }  
     })
 
@@ -45,25 +58,42 @@ export default function App() {
 
   }, [])
 
-  const [isAdmin, SetIsAdmin] = useState(false)
+  // const [loggedIn, SetLoggedIn] = useState(false)
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        SetIsAdmin(true)
-        console.log("User is logged in")
-      } else {
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       SetLoggedIn(true)
+  //       console.log("User logged in... " + user.email)
+  //     } else {
+  //       SetLoggedIn(false)
+  //       console.log("No user logged in...")
+  //     }  
+  //   })
+
+  //   return unsubscribe
+
+  // }, [])
+
+  // const [isAdmin, SetIsAdmin] = useState(false)
+
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       setIsAdmin(true)
+  //       console.log(isAdmin)
+  //     } else {
         
-      }  
-    })
+  //     }  
+  //   })
 
-    return unsubscribe
+  //   return unsubscribe
 
-  }, []) 
+  // }, []) 
 
   return (
     <>
-      {loggedIn ? (
+      { loggedIn ? (
         <>
           { isAdmin ? (
             <NavigationContainer>
