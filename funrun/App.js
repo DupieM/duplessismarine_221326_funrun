@@ -81,6 +81,7 @@ export default function App() {
   }, [])
 
   //old code for role based login
+  
   // const [loggedIn, SetLoggedIn] = useState(false)
 
   // useEffect(() => {
@@ -98,12 +99,12 @@ export default function App() {
 
   // }, [])
 
-  // const [isAdmin, SetIsAdmin] = useState(false)
+  // const [isAdmin, setIsAdmin] = useState(false)
 
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
   //     if (user) {
-  //       setIsAdmin(true)
+  //       setIsAdmin(false)
   //       console.log(isAdmin) 
   //     } else {
         
@@ -120,7 +121,7 @@ export default function App() {
         <>
           { isAdmin ? (
             <NavigationContainer>
-            <Tab.Navigator screenOptions={{ headerShown: false }}>
+            <Tab.Navigator>
               <Tab.Screen name="Home" component={CompetitionScreen}
               options={{
                 tabBarLabel: 'Home',
@@ -153,33 +154,43 @@ export default function App() {
             </NavigationContainer>
         ) : (
           <NavigationContainer>
-          <Tab.Navigator screenOptions={{ headerShown: false }}>
+          <Tab.Navigator 
+          screenOptions={({ route }) => ({
+            headerShown: false,
+            tabBarStyle: {
+              backgroundColor: '#194D10',
+              height: 55,
+              borderTopWidth: 0,
+              padding: 3,
+              paddingBottom: 3
+          },
+        })}>
             <Tab.Screen name="Home" component={CompetitionScreen}
             options={{
               tabBarLabel: 'Home',
               tabBarIcon: ({}) =>  (
-                <Ionicons name="home" color={'blue'} size={32} />
+                <Ionicons name="home" color={'#FFA948'} size={32} />
               )
             }}/>
             <Tab.Screen name="Entry" component={EntryScreen}
               options={{
                 tabBarLabel: 'Enter',
                 tabBarIcon: ({}) =>  (
-                  <Ionicons name="enter" color={'blue'} size={32} />
+                  <Ionicons name="enter" color={'#FFA948'} size={32} />
                 )
               }}/>
               <Tab.Screen name="Results" component={ResultScreen}
               options={{
                 tabBarLabel: 'Results',
                 tabBarIcon: ({}) =>  (
-                  <Ionicons name="trophy" color={'blue'} size={32} />
+                  <Ionicons name="trophy" color={'#FFA948'} size={32} />
                 )
               }}/>
               <Tab.Screen name="Profile" component={ProfileScreen}
               options={{
                 tabBarLabel: 'Profile',
                 tabBarIcon: ({}) =>  (
-                  <Ionicons name="person" color={'blue'} size={32} />
+                  <Ionicons name="person" color={'#FFA948'} size={32} />
                 )
               }}/>
           </Tab.Navigator>

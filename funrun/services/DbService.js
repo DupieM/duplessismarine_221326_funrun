@@ -1,5 +1,5 @@
 // Firestore functionality
-import {  collection, addDoc, getDocs, orderBy, query } from "firebase/firestore"
+import {  collection, addDoc, getDocs, orderBy, query, doc } from "firebase/firestore"
 import { db } from "../firebase";
 
 //Create rest of user information from sign up page
@@ -36,15 +36,23 @@ export const getMyCourseList = async () => {
 }
 
 // Create Entry for Contestant
-export const createNewEntry = async (entry) => {
+export const createNewEntry = async (courseId, entryData) => {
     try {
-        //docRef - our reference to our newly created document (brand new with a self-generated ID)
-        const docRef = await addDoc(collection(db, "entries"), entry);
-        console.log("Document written with ID: ", docRef.id);
-        return true
+        // specifying where to add the entries
+        const courseRef = doc(db, "courses", courseId) // adding specific doc's id
+
+        // specifying the subcollection we want to add
+        const entryRef = collection(courseRef, "entries")
+
+        // adding the document into this subcollection
+        const docRef = await addDoc(entryRef, entryData)
+
+        console.log("Success adding doc with id:" + docRef.id)
+
+        return true //success
     } catch (e) {
-        console.error("Error adding document: ", e);
-        return false
+        console.error("Something went wrong adding entry document:", e);
+        return false // failed
     }
 }
 

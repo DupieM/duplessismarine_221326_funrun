@@ -1,65 +1,92 @@
 import { StyleSheet, View, Text, TextInput, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { createNewEntry } from '../services/DbService';
+import { createNewEntry, getMyCourseList } from '../services/DbService';
+import {Picker} from '@react-native-picker/picker'; //a lot of other cool pickers available rather than this one
+import { Dropdown } from 'react-native-element-dropdown';
+
 
 function EntryScreen({ route, navigation }) {
 
   //Retrive the params from the competition screen
   const { courseName, courseDescription } = route.params;
 
-  //creating the entry
-  const [course_name, setCourse_Name] = useState('')
-  const [con_name, setCon_Name] = useState('')
-  const [skill_level, setSkill_Level] = useState('')
-  const [age, setAge] = useState('')
-  const [height, setHeight] = useState('')
+  //creating the entries
+  const [course_name, setCourse_Name] = useState("")
+  const [con_name, setCon_Name] = useState("")
+  const [skill_level, setSkill_Level] = useState("")
+  const [age, setAge] = useState("")
+  const [height, setHeight] = useState("")
+  const [selectedCourse, setSelectedCourse] = useState("")
 
   const [isFormValid, setIsFormValid] = useState(false);
-  useEffect(() => {
-      // Check if all required fields are filled
-      if (course_name.trim() && con_name.trim() && skill_level.trim() && age.trim() && height.trim()) {
-          setIsFormValid(true);
-      } else {
-          setIsFormValid(false);
-      }
-  }, [course_name, con_name, skill_level, age, height]);
-
   const handleCreation = async () => {
-    //Need to pass all our data to the function
+    //create new entry for the specific course
 
-    //Make sure all the values have been entered - show error/disable button
-    if (!isFormValid) {
-        Alert.alert("Validation Error", "Please fill all the required fields.");
-        return;
+    var entry = {
+      con_name: con_name,
+      skill_level: skill_level,
+      age: age,
+      height: height,
     }
 
-    var entries = {course_name, con_name, skill_level, age, height}
-    var success = await createNewEntry(entries)
+    //call my firebase function
+    var success = await createNewEntry(selectedCourse, entry) //true or false based on the tryCatch
+
     if(success){
       Alert.alert("Success", "You have entered the comopetition successfully");
+      navigation.goBack();
     } else {
         //Validation why
         Alert.alert("Error", "Failed to create bucket list item.");
     }
 
-}
+  }
+
+  useEffect(() => {
+    handleGettingcourses()
+  }, [])
+
+  //get al my courses name
+  const [courses, setCourses] = useState([]);
+
+    const handleGettingcourses = async () => {
+        var coursesdata = await getMyCourseList();
+        setCourses(coursesdata);
+    }
+
+  // data for the dropdown box
+  const [value, setValue] = useState(null);
+  const [isFocus, setIsFocus] = useState(false);
+
+  const data = [
+    { label: 'Novice', value: 'Novice' },
+    { label: 'Intermediate', value: 'Intermediate' },
+    { label: 'Expert', value: 'Expert' }
+  ]
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}
-      
-      >{JSON.stringify(courseName)}</Text>
+      <Text style={styles.title}>{courseName}</Text>
       <View style={styles.infobox}>
         <Text style={styles.subhead}>
-          {JSON.stringify(courseDescription)} 
+          {courseDescription} 
         </Text>
       </View>
       <Text style={styles.subtitle}>Enter Competition</Text>
       <View style={styles.enterfield}>
-        <TextInput style={styles.enter} placeholder='Re-Enter Course Name' placeholderTextColor="#00272E"
-          onChangeText={newText => setCourse_Name(newText)}
-          defaultValue={course_name}
-        />
+        <Picker
+            style={styles.enter}
+            selectedValue={selectedCourse}
+            onValueChange={(itemValue, itemIndex) =>
+                setSelectedCourse(itemValue)
+            }>
+                {/* Update to data from db */}
+                {courses != [] ? (
+                    courses.map((course) => (
+                        <Picker.Item key={course.id} label={course.name} value={course.id} />
+                    ))
+                ) : null }    
+        </Picker>
       </View>
       <View style={styles.enterfield}>
         <TextInput style={styles.enter} placeholder='Enter Name' placeholderTextColor="#00272E"
@@ -68,11 +95,24 @@ function EntryScreen({ route, navigation }) {
         />
       </View>
       <View style={styles.enterfield}>
-        <TextInput style={styles.enter} placeholder='Enter Skill Level' placeholderTextColor="#00272E"
-          onChangeText={newText => setSkill_Level(newText)}
-          defaultValue={skill_level}
-        />
-        <Text style={styles.subtext}>(Novice/Intermediate/Expert)</Text>
+        <Dropdown
+            style={[styles.dropdown]}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            data={data}
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder='Choose Skill Level'
+            value={value}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            onChange={item => {
+              setValue(item.value);
+              setIsFocus(false);
+              setSkill_Level(item.value);
+            }}
+          />
       </View>
       <View style={styles.enterfield}>
         <TextInput style={styles.enter2} placeholder='Age' keyboardType='numeric' placeholderTextColor="#00272E"
