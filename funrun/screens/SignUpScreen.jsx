@@ -37,6 +37,7 @@ function SignUpScreen({ navigation }) {
           Alert.alert("Validation Error", "Please fill all the required fields.");
           return;
       }
+      // TODO: switch handlesigning and createuserinfo functions om
 
       var infos = {name, role, email, password}
       var success = await createUserInformation(infos)

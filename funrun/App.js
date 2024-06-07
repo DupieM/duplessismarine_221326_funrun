@@ -17,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import ContestantScreen from './screens/ContestantScreen';
 import JudgingScreen from './screens/JudgingScreen';
 import ManagementScreen from './screens/ManagementScreen';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,10 +35,16 @@ export default function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        if (userDoc.exists()) {
-          setIsAdmin(userDoc.data().isAdmin);
-          console.log("Admin status: ", userDoc.data().isAdmin);
+        try {
+        // get with email (Where function)
+        // const userDoc = query(await getDoc(doc(db, "users"), where("email", "==", user.email)));
+        const q = query(collection(db, "users"), where("email", "==", user.email));
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          querySnapshot.forEach((doc) => {
+            setIsAdmin(doc.data().isAdmin);
+            console.log("Admin status: ", doc.data().isAdmin);
+          });
         } else {
           console.log("No such document!");
           setIsAdmin(false);
@@ -46,11 +52,27 @@ export default function App() {
 
         setLoggedIn(true)
         console.log("User logged in... " + user.email)
+
+        } catch (error) {
+          console.error("Error fetching user document: ", error);
+        }
         
-      } else {l
+
+        // if (userDoc.exists()) {
+        //   setIsAdmin(userDoc.data().isAdmin);
+        //   console.log("Admin status: ", userDoc.data().isAdmin);
+        // } else {
+        //   console.log("No such document!");
+        //   setIsAdmin(false);
+        // }
+
+        
+        
+        
+      } else {
         setLoggedIn(false)
-        console.log("No user logged in...")
         setIsAdmin(false)
+        console.log("No user logged in...")
       }  
     })
 
@@ -58,6 +80,7 @@ export default function App() {
 
   }, [])
 
+  //old code for role based login
   // const [loggedIn, SetLoggedIn] = useState(false)
 
   // useEffect(() => {
@@ -81,7 +104,7 @@ export default function App() {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
   //     if (user) {
   //       setIsAdmin(true)
-  //       console.log(isAdmin)
+  //       console.log(isAdmin) 
   //     } else {
         
   //     }  

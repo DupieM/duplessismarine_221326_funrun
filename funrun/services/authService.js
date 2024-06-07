@@ -27,7 +27,8 @@ export const handleSignin = (email, password) => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log("Signed In User -" + user.email)
+    console.log("Signed In User -" + user.uid)
+    // TODO: send uid back
     // ...
   })
   .catch((error) => {

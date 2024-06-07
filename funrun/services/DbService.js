@@ -5,6 +5,7 @@ import { db } from "../firebase";
 //Create rest of user information from sign up page
 export const createUserInformation = async (info) => {
     try {
+        //TODO: verander addDOc na setdoc, uid van authentication nodig he
         //docRef - our reference to our newly created document (brand new with a self-generated ID)
         const docRef = await addDoc(collection(db, "users"), info);
         console.log("Document written with ID: ", docRef.id);
