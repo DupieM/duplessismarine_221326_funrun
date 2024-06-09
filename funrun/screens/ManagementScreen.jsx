@@ -26,7 +26,7 @@ function ManagementScreen() {
 
   //Toggle 
   const [toggleValue, setToggleValue] = useState(false);
-  const [toggleValue1, setToggleValue1] = useState(false);
+  const [toggleValue1, setToggleValue1] = useState(true);
 
   return (
     <ScrollView style={styles.container}>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginBottom: 6,
     marginLeft: 15,
-    marginRight: 16,
+    marginRight: 20,
     marginTop: -5
   },
   btn: {
