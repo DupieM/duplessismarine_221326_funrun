@@ -4,13 +4,11 @@ import { useFocusEffect } from '@react-navigation/native';
 import { collection, doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 
-const ContestantCard = (props) => {
-
-    //Getting the specific entry of contestant for specific course
-    const { course } = props
+const ContestantCard = ({course, navigation}) => {
 
     const [entries, setEntries] = useState([])
 
+    // get specific course entry information
     useFocusEffect(
       React.useCallback(() => {
         // Do something when the screen is focused
@@ -52,8 +50,15 @@ const ContestantCard = (props) => {
             </Text>
             
             {entries != [] ? (
-                entries.map((item) => (
-                    <TouchableOpacity style={styles.enterfield} key={item.id}>
+                entries.map((item, index) => (
+                    <TouchableOpacity style={styles.enterfield} key={index}
+                    onPress={() => {
+                        navigation.navigate("Judging", { // Navigate to the detail screen with the specific params
+                            itemId: item.id,
+                            itemName: item.con_name,
+                            courseName: course.name,
+                        })
+                      }}>
                         <Text style={styles.enter}>{item.con_name}</Text>
                     </TouchableOpacity>
                 ))

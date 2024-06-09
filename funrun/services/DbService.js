@@ -56,9 +56,6 @@ export const createNewEntry = async (courseId, entryData) => {
     }
 }
 
-// get specific course entry information
-
-
 // Create entry for timeing
 export const createNewTime = async (time) => {
     try {

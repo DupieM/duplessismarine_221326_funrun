@@ -1,15 +1,45 @@
 import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity, TextInput } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import { createNewTime } from '../services/DbService';
 
-function JudgingScreen() {
+function JudgingScreen({ navigation, route }) {
+
+  //Retrive the params from the contestant screen
+  const { itemName, courseName } = route.params;
+
+  //creating variables for input fields
+  const [coursename, setCourseName] = useState('');
+  const [contestantname, setContestantName] = useState('');
+  const [time, setTime] = useState('')
+
+  //Creating the time entry per contestant and coirse
+  const handleCreation = async () => {
+    // 
+    var times = {coursename, contestantname, time}
+    var success = await createNewTime(times)
+    if(success){
+      navigation.goBack();
+    } else {
+        //Validation why
+        Alert.alert("Error", "Failed to create time entry");
+    }
+  };
+
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Judging</Text>
       <View style={styles.enterfield}>
-        <Text style={styles.enter}>Contestant Name</Text>
+        <TextInput style={styles.enter}
+          onChangeText={itemName => setContestantName(itemName)}
+          defaultValue={itemName}
+        />
       </View>
       <View style={styles.enterfield}>
-        <Text style={styles.enter}>Course Name</Text>
+        <TextInput style={styles.enter}
+          onChangeText={newText => setCourseName(newText)}
+          defaultValue={courseName}
+        />
       </View>
       <View style={styles.box1}>
         <Text style={styles.enter2}>Life Timer</Text>
@@ -25,8 +55,9 @@ function JudgingScreen() {
           style={styles.enter3}
           placeholder='00:00:00'
           keyboardType='numeric'
+          onChangeText={newText => setTime(newText)}
         />
-        <TouchableOpacity style={styles.Btn}>
+        <TouchableOpacity style={styles.Btn}  onPress={handleCreation}>
           <Text style={styles.Btntext}>Submit</Text>
         </TouchableOpacity>
       </View>

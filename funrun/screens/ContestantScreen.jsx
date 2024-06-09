@@ -2,8 +2,12 @@ import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity } f
 import React, { useEffect, useState } from 'react'
 import { getMyCourseList } from '../services/DbService';
 import ContestantCard from './ContestantCard';
+import { useNavigation } from '@react-navigation/native';
 
-function ContestantScreen(props) {
+function ContestantScreen() {
+
+  const navigation = useNavigation();
+
    // Getting Courses
    const [courses, setCourseItems] = useState([]);
 
@@ -22,7 +26,7 @@ function ContestantScreen(props) {
       
         {courses != [] ? (
           courses.map((course) => (
-            <ContestantCard course={course} key={course.id} />
+            <ContestantCard course={course} key={course.id} navigation={navigation}/>
           ))
         ) : null}
       
