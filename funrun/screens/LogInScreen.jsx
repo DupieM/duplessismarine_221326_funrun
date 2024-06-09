@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, } from 'react-native'
 import React, { useState } from 'react'
 import { Link } from 'expo-router';
-import { handleLogin } from '../services/authService';
+import { googlesignin, handleLogin } from '../services/authService';
 
 function LogInScreen({ navigation }) {
 
@@ -10,6 +10,9 @@ function LogInScreen({ navigation }) {
 
   // Login Function
   const login = () => {handleLogin(email, password)}
+
+  // Google Authentication
+  const googlelogin = () => {googlesignin()}
 
   return (
     <ScrollView style={styles.container}>
@@ -39,7 +42,9 @@ function LogInScreen({ navigation }) {
 
       <Text style={styles.subhead}>------------ or ------------</Text>
         <View style={styles.imgcontainer}>
-          <Image style={styles.imgoption} source={require('../assets/google.png')}/>
+          <TouchableOpacity onPress={googlelogin}>
+            <Image style={styles.imgoption} source={require('../assets/google.png')}/>
+          </TouchableOpacity>
           <Image style={styles.imgoption} source={require('../assets/facebook.png')}/>
         </View>
 

@@ -8,7 +8,7 @@ function CompetitionScreen({ navigation }) {
   const [courseItems, setCourseItems] = useState([]);
 
   useEffect(() => { //only running on first load, but when naviagting back doesn't rereander
-        handleGettingOfData()
+    handleGettingOfData()
   }, [])
 
   const handleGettingOfData = async () => {

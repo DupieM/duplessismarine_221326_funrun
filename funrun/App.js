@@ -29,68 +29,49 @@ export default function App() {
     'PoetsenOne':require('./assets/fonts/PoetsenOne-Regular.ttf'),
   })
 
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [isAdmin, setIsAdmin] = useState(false)
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        try {
-        // get with email (Where function)
-        // const userDoc = query(await getDoc(doc(db, "users"), where("email", "==", user.email)));
-        const q = query(collection(db, "users"), where("email", "==", user.email));
-        const querySnapshot = await getDocs(q);
-        if (!querySnapshot.empty) {
-          querySnapshot.forEach((doc) => {
-            setIsAdmin(doc.data().isAdmin);
-            console.log("Admin status: ", doc.data().isAdmin);
-          });
-        } else {
-          console.log("No such document!");
-          setIsAdmin(false);
-        }
-
-        setLoggedIn(true)
-        console.log("User logged in... " + user.email)
-
-        } catch (error) {
-          console.error("Error fetching user document: ", error);
-        }
-        
-
-        // if (userDoc.exists()) {
-        //   setIsAdmin(userDoc.data().isAdmin);
-        //   console.log("Admin status: ", userDoc.data().isAdmin);
-        // } else {
-        //   console.log("No such document!");
-        //   setIsAdmin(false);
-        // }
-
-        
-        
-        
-      } else {
-        setLoggedIn(false)
-        setIsAdmin(false)
-        console.log("No user logged in...")
-      }  
-    })
-
-    return unsubscribe
-
-  }, [])
-
-  //old code for role based login
-  
-  // const [loggedIn, SetLoggedIn] = useState(false)
+  // const [loggedIn, setLoggedIn] = useState(false)
+  // const [isAdmin, setIsAdmin] = useState(false)
 
   // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //   const unsubscribe = onAuthStateChanged(auth, async (user) => {
   //     if (user) {
-  //       SetLoggedIn(true)
+  //       try {
+  //       // get with email (Where function)
+  //       // const userDoc = query(await getDoc(doc(db, "users"), where("email", "==", user.email)));
+  //       const q = query(collection(db, "users"), where("email", "==", user.email));
+  //       const querySnapshot = await getDocs(q);
+  //       if (!querySnapshot.empty) {
+  //         querySnapshot.forEach((doc) => {
+  //           setIsAdmin(doc.data().isAdmin);
+  //           console.log("Admin status: ", doc.data().isAdmin);
+  //         });
+  //       } else {
+  //         console.log("No such document!");
+  //         setIsAdmin(false);
+  //       }
+
+  //       setLoggedIn(true)
   //       console.log("User logged in... " + user.email)
+
+  //       } catch (error) {
+  //         console.error("Error fetching user document: ", error);
+  //       }
+        
+
+  //       // if (userDoc.exists()) {
+  //       //   setIsAdmin(userDoc.data().isAdmin);
+  //       //   console.log("Admin status: ", userDoc.data().isAdmin);
+  //       // } else {
+  //       //   console.log("No such document!");
+  //       //   setIsAdmin(false);
+  //       // }
+
+        
+        
+        
   //     } else {
-  //       SetLoggedIn(false)
+  //       setLoggedIn(false)
+  //       setIsAdmin(false)
   //       console.log("No user logged in...")
   //     }  
   //   })
@@ -99,21 +80,40 @@ export default function App() {
 
   // }, [])
 
-  // const [isAdmin, setIsAdmin] = useState(false)
+  //old code for role based login
+  
+  const [loggedIn, SetLoggedIn] = useState(false)
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       setIsAdmin(false)
-  //       console.log(isAdmin) 
-  //     } else {
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        SetLoggedIn(true)
+        console.log("User logged in... " + user.email)
+      } else {
+        SetLoggedIn(false)
+        console.log("No user logged in...")
+      }  
+    })
+
+    return unsubscribe
+
+  }, [])
+
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAdmin(true)
+        console.log(isAdmin) 
+      } else {
         
-  //     }  
-  //   })
+      }  
+    })
 
-  //   return unsubscribe
+    return unsubscribe
 
-  // }, []) 
+  }, []) 
 
   return (
     <>
@@ -121,33 +121,43 @@ export default function App() {
         <>
           { isAdmin ? (
             <NavigationContainer>
-            <Tab.Navigator>
+            <Tab.Navigator 
+              screenOptions={({ route }) => ({
+                headerShown: false,
+                tabBarStyle: {
+                  backgroundColor: '#194D10',
+                  height: 55,
+                  borderTopWidth: 0,
+                  padding: 3,
+                  paddingBottom: 3
+              },
+            })}>
               <Tab.Screen name="Home" component={CompetitionScreen}
               options={{
                 tabBarLabel: 'Home',
                 tabBarIcon: ({}) =>  (
-                  <Ionicons name="home" color={'blue'} size={32} />
+                  <Ionicons name="home" color={'#FFA948'} size={32} />
                 )
               }}/>
               <Tab.Screen name="Contestant" component={ContestantScreen}
             options={{
               tabBarLabel: 'Contestant',
               tabBarIcon: ({}) =>  (
-                <Ionicons name="people" color={'blue'} size={32} />
+                <Ionicons name="people" color={'#FFA948'} size={32} />
               )
             }}/>
             <Tab.Screen name="Judging" component={JudgingScreen}
             options={{
               tabBarLabel: 'Judging',
               tabBarIcon: ({}) =>  (
-                <Ionicons name="time" color={'blue'} size={32} />
+                <Ionicons name="time" color={'#FFA948'} size={32} />
               )
             }}/>
             <Tab.Screen name="Management" component={ManagementScreen}
             options={{
               tabBarLabel: 'Management',
               tabBarIcon: ({}) =>  (
-                <Ionicons name="clipboard" color={'blue'} size={32} />
+                <Ionicons name="clipboard" color={'#FFA948'} size={32} />
               )
             }}/>
             </Tab.Navigator>
