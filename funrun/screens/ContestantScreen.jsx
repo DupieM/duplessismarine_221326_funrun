@@ -1,13 +1,31 @@
 import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getMyCourseList } from '../services/DbService';
+import ContestantCard from './ContestantCard';
 
-function ContestantScreen() {
+function ContestantScreen(props) {
+   // Getting Courses
+   const [courses, setCourseItems] = useState([]);
+
+   useEffect(() => { //only running on first load, but when naviagting back doesn't rereander
+     handleGettingOfData()
+   }, [])
+ 
+   const handleGettingOfData = async () => {
+     var allData = await getMyCourseList()
+     setCourseItems(allData)
+   }
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Contestants</Text>
-      <View style={styles.enterfield}>
-        <Text style={styles.enter}>Contestant Name</Text>
-      </View>
+      
+        {courses != [] ? (
+          courses.map((course) => (
+            <ContestantCard course={course} key={course.id} />
+          ))
+        ) : null}
+      
     </ScrollView>
   )
 }
@@ -27,19 +45,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 30,
     marginBottom: 20
-  },
-  enterfield: {
-    marginBottom: 18,
-  },
-  enter: {
-    backgroundColor: 'rgba(255, 191, 96, 0.3)',
-    height: 50,
-    fontSize: 32,
-    padding: 2,
-    paddingLeft: 20,
-    marginLeft: 35,
-    borderRadius: 10,
-    width: '80%',
-    color: '#00272E',
   },
 })

@@ -56,6 +56,21 @@ export const createNewEntry = async (courseId, entryData) => {
     }
 }
 
-// Create entry for time
+// get specific course entry information
+
+
+// Create entry for timeing
+export const createNewTime = async (time) => {
+    try {
+        const docRef = await addDoc(collection(db, "results"), time);
+
+        console.log("Success adding time:" + docRef.id)
+
+        return true //success
+    } catch (e) {
+        console.error("Error adding document: ", e);
+        return false //failed
+    }
+}
 
 // Get time for results page

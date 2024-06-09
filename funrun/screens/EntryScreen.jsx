@@ -33,7 +33,7 @@ function EntryScreen({ route, navigation }) {
     var success = await createNewEntry(selectedCourse, entry) //true or false based on the tryCatch
 
     if(success){
-      Alert.alert("Success", "You have entered the comopetition successfully");
+      Alert.alert("Success", "You have entered the competition successfully");
       navigation.goBack();
     } else {
         //Validation why
@@ -91,7 +91,7 @@ function EntryScreen({ route, navigation }) {
       <View style={styles.enterfield}>
         <TextInput style={styles.enter} placeholder='Enter Name' placeholderTextColor="#00272E"
           onChangeText={newText => setCon_Name(newText)}
-          defaultValue={con_name}
+          defaultValue={null}
         />
       </View>
       <View style={styles.enterfield}>
@@ -117,13 +117,13 @@ function EntryScreen({ route, navigation }) {
       <View style={styles.enterfield}>
         <TextInput style={styles.enter2} placeholder='Age' keyboardType='numeric' placeholderTextColor="#00272E"
           onChangeText={newText => setAge(newText)}
-          defaultValue={age}
+          defaultValue={null}
         />
       </View>
       <View style={styles.enterfield}>
         <TextInput style={styles.enter2} placeholder='Height' placeholderTextColor="#00272E"
           onChangeText={newText => setHeight(newText)}
-          defaultValue={height}
+          defaultValue={null}
         />
       </View>
       <TouchableOpacity style={styles.Btn} onPress={handleCreation}>
