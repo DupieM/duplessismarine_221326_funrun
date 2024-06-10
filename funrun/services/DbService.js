@@ -1,18 +1,19 @@
 // Firestore functionality
-import {  collection, addDoc, getDocs, orderBy, query, doc } from "firebase/firestore"
+import {  collection, addDoc, getDocs, orderBy, query, doc, setDoc } from "firebase/firestore"
 import { db } from "../firebase";
 
 //Create rest of user information from sign up page
-export const createUserInformation = async (info) => {
+export const createUserInformation = async (info, uid) => {
+    console.log("...call creation")
     try {
         //TODO: verander addDOc na setdoc, uid van authentication nodig he
         //docRef - our reference to our newly created document (brand new with a self-generated ID)
-        const docRef = await addDoc(collection(db, "users"), info);
-        console.log("Document written with ID: ", docRef.id);
-        return true
+        const docRef = await setDoc(doc(db, "users", uid), info);
+        // console.log("Document written with ID: ", docRef.id);
+        // return true
     } catch (e) {
         console.error("Error adding document: ", e);
-        return false
+        // return false
     }
 }
 

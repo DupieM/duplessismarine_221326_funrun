@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, ImageBackground, } from 'react-native'
+import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, ImageBackground, Switch } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import { Dropdown } from 'react-native-element-dropdown';
 import { handleSignin } from '../services/authService';
@@ -15,8 +15,9 @@ function SignUpScreen({ navigation }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('')
-  const [role, setRole] = useState('')
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   //Sign up Function
   const [isFormValid, setIsFormValid] = useState(false);
@@ -37,16 +38,17 @@ function SignUpScreen({ navigation }) {
           Alert.alert("Validation Error", "Please fill all the required fields.");
           return;
       }
-      // TODO: switch handlesigning and createuserinfo functions om
+      //switch handlesigning and createuserinfo functions om
 
-      var infos = {name, role, email, password}
-      var success = await createUserInformation(infos)
-      if(success){
-        handleSignin(email, password);
-      } else {
-          //Validation why
-          Alert.alert("Error", "Failed to create bucket list item.");
-      }
+      var infos = {name, role, email, password, isAdmin}
+      var success = await handleSignin(email, password, infos);
+      
+      // if(success){
+      //   await createUserInformation(infos, success) //send uid to create user as a parametar 
+      // } else {
+      //     //Validation why
+      //     Alert.alert("Error", "Failed to create bucket list item.");
+      // }
     };
 
     // const signin = () => {
@@ -108,6 +110,15 @@ function SignUpScreen({ navigation }) {
             }}
           />
         </View>
+        <View style={styles.switch}>
+          <Switch
+            trackColor={{false: 'black', true: 'green'}}
+            thumbColor={isAdmin ? 'yellow' : 'white'}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={(toggle) => setIsAdmin(toggle)}
+          />
+            <Text>Priority?</Text>
+          </View>
         <TouchableOpacity style={styles.Btn} onPress={handleCreation}>
           <Text style={styles.Btntext}>Sign Up</Text>
         </TouchableOpacity>

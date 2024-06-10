@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 import { auth, db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { GoogleAuthProvider, getAuth, signInWithPopup,} from "firebase/auth";
+import { createUserInformation } from "./DbService";
 
 // Log In
 export const handleLogin = async (email, password) => {
@@ -47,19 +48,22 @@ export const googlesignin = () => {
 }
 
 // Create an account
-export const handleSignin = (email, password) => {
+export const handleSignin = async (email, password, info) => {
   createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
+  .then(async (userCredential) => {
     // Signed in 
     const user = userCredential.user;
     console.log("Signed In User -" + user.uid)
     // TODO: send uid back
+    const db = await createUserInformation(info, user.uid)
+    return user.uid
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorMessage)
+    return null
   });
 }
 
