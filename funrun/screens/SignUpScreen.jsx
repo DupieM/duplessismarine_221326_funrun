@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, ImageBackground, Switch } from 'react-native'
+import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, ImageBackground, Switch, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import { Dropdown } from 'react-native-element-dropdown';
 import { handleSignin } from '../services/authService';
@@ -43,12 +43,10 @@ function SignUpScreen({ navigation }) {
       var infos = {name, role, email, password, isAdmin}
       var success = await handleSignin(email, password, infos);
       
-      // if(success){
-      //   await createUserInformation(infos, success) //send uid to create user as a parametar 
-      // } else {
-      //     //Validation why
-      //     Alert.alert("Error", "Failed to create bucket list item.");
-      // }
+      if (success) {
+        Alert.alert("Sign Up", "You have successfully siged into FunRun.");
+        return;
+      }
     };
 
     // const signin = () => {

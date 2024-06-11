@@ -20,8 +20,18 @@ function EntryScreen({ route, navigation }) {
 
   const [isFormValid, setIsFormValid] = useState(false);
   const handleCreation = async () => {
-    //create new entry for the specific course
+    
+    useEffect(() => {
+      // Check if all required fields are filled
+      if (con_name.trim() && skill_level.trim() && age.trim() && height.trim() && selectedCourse.trim()) {
+          setIsFormValid(true);
+      } else {
+          setIsFormValid(false);
+      }
+  }, [con_name, skill_level, age, height, selectedCourse]);
 
+
+    //create new entry for the specific course
     var entry = {
       con_name: con_name,
       skill_level: skill_level,

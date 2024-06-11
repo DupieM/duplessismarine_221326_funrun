@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity, } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'expo-router';
 import { googlesignin, handleLogin } from '../services/authService';
 
@@ -9,7 +9,32 @@ function LogInScreen({ navigation }) {
   const [password, setPassword] = useState('');
 
   // Login Function
-  const login = () => {handleLogin(email, password)}
+  const [isFormValid, setIsFormValid] = useState(false);
+    useEffect(() => {
+        // Check if all required fields are filled
+        if (email.trim() && password.trim()) {
+            setIsFormValid(true);
+        } else {
+            setIsFormValid(false);
+        }
+    }, [email, password]);
+
+  const login = async () => {
+    //Make sure all the values have been entered - show error/disable button
+    if (!isFormValid) {
+      Alert.alert("Validation Error", "Please fill all the required fields.");
+      return;
+    }
+
+    var success = await handleLogin(email, password);
+      
+      if (success) {
+        Alert.alert("Log In", "You have successfully logged into FunRun.");
+        return;
+      }
+
+    
+  }
 
   // Google Authentication
   const googlelogin = () => {googlesignin()}

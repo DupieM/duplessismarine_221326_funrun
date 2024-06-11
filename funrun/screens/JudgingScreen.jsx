@@ -1,5 +1,5 @@
-import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity, TextInput, Alert } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { createNewTime } from '../services/DbService';
 
 function JudgingScreen({ navigation, route }) {
@@ -12,12 +12,30 @@ function JudgingScreen({ navigation, route }) {
   const [contestantname, setContestantName] = useState('');
   const [time, setTime] = useState('')
 
+  const [isFormValid, setIsFormValid] = useState(false);
+    useEffect(() => {
+        // Check if all required fields are filled
+        if (coursename.trim() && contestantname.trim() && time.trim()) {
+            setIsFormValid(true);
+        } else {
+            setIsFormValid(false);
+        }
+    }, [coursename, contestantname, time]);
+
   //Creating the time entry per contestant and coirse
   const handleCreation = async () => {
+
+    //Make sure all the values have been entered - show error/disable button
+    if (!isFormValid) {
+      Alert.alert("Validation Error", "Please fill all the required fields.");
+      return;
+  }
+
     // 
     var times = {coursename, contestantname, time}
     var success = await createNewTime(times)
     if(success){
+      Alert.alert("Success", "You have finished judging this contestant");
       navigation.goBack();
     } else {
         //Validation why

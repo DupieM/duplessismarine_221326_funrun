@@ -45,20 +45,6 @@ export default function App() {
             console.log("No such document!");
             setIsAdmin(false);
           }
-          
-        // get with email (Where function)
-        // const userDoc = query(await getDoc(doc(db, "users"), where("email", "==", user.email)));
-        // const q = query(collection(db, "users"), where("doc.id", "==", user.uid));
-        // const querySnapshot = await getDocs(q);
-        // if (!querySnapshot.empty) {
-        //   querySnapshot.forEach((doc) => {
-        //     setIsAdmin(doc.data().isAdmin);
-        //     console.log("Admin status: ", doc.data().isAdmin);
-        //   });
-        // } else {
-        //   console.log("No such document!");
-        //   setIsAdmin(false);
-        // }
 
         setLoggedIn(true)
         console.log("User logged in... " + user.email)
@@ -77,41 +63,6 @@ export default function App() {
     return unsubscribe
 
   }, [])
-
-  //old code for role based login
-  
-  // const [loggedIn, SetLoggedIn] = useState(false)
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       SetLoggedIn(true)
-  //       console.log("User logged in... " + user.email)
-  //     } else {
-  //       SetLoggedIn(false)
-  //       console.log("No user logged in...")
-  //     }  
-  //   })
-
-  //   return unsubscribe
-
-  // }, [])
-
-  // const [isAdmin, setIsAdmin] = useState(false)
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       setIsAdmin(true)
-  //       console.log(isAdmin) 
-  //     } else {
-        
-  //     }  
-  //   })
-
-  //   return unsubscribe
-
-  // }, []) 
 
   return (
     <>
