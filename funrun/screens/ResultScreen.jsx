@@ -1,7 +1,46 @@
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getTimeResluts, getTimeReslutsone, getTimeReslutssecond, getTimeReslutsthird } from '../services/DbService';
 
 function ResultScreen() {
+
+  //Resluts data 
+  const [reslutTimesOne, setReslutTimesOne] = useState([]); // 1ste Place
+  const [reslutTimesTwo, setReslutTimesTwo] = useState([]); // 2nd place
+  const [reslutTimesThree, setReslutTimesThree] = useState([]); // 3rd place
+  const [reslutTimes, setReslutTimes] = useState([]); // 4th - etc. place
+
+  useEffect(() => { //only running on first load, but when naviagting back doesn't rereander
+    handleGettingOfData_One() // 1ste place
+    handleGettingOfData_Two() // 2nd place
+    handleGettingOfData_Three() // 3rd place
+    handleGettingOfData() // 4th - etc. place
+  }, [])
+
+  //getting reslut data for 1ste place
+  const handleGettingOfData_One = async () => {
+    var allData = await getTimeReslutsone()
+    setReslutTimesOne(allData)
+  }
+
+  //getting reslut data for 2nd place
+  const handleGettingOfData_Two = async () => {
+    var allData = await getTimeReslutssecond()
+    setReslutTimesTwo(allData)
+  }
+
+  //getting reslut data for 3rd place
+  const handleGettingOfData_Three = async () => {
+    var allData = await getTimeReslutsthird()
+    setReslutTimesThree(allData)
+  }
+
+  //getting reslut data for 3rd place
+  const handleGettingOfData = async () => {
+    var allData = await getTimeResluts()
+    setReslutTimes(allData)
+  }
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Results Board</Text>
@@ -10,69 +49,68 @@ function ResultScreen() {
           style={styles.crown} 
           source={require('../assets/crown.png')}
         />
-        <Image
-          style={styles.profimg} 
-          source={require('../assets/Dummy_avatar.png')}
-        />
-        <Text style={styles.profname}>Name</Text>
+        {
+          reslutTimesOne != [] ? (
+            reslutTimesOne.map((times, index) => (
+              <View key={index}>
+                <Text style={styles.profname}>{times.contestantname}</Text>
+                <Text style={styles.profname}>{times.coursename}</Text>
+                <Text style={styles.profname}>{times.time}</Text>
+              </View>
+            ))
+          ) : (
+            <Text>No Items Found Yet</Text>
+          )
+        }
       </View>
       <View style={styles.positiontwo}>
-        <Image
-          style={styles.profimg} 
-          source={require('../assets/Dummy_avatar.png')}
-        />
-        <Text style={styles.profname}>Name</Text>
+        {
+          reslutTimesTwo != [] ? (
+            reslutTimesTwo.map((times, index) => (
+              <View key={index}>
+                <Text style={styles.profname}>{times.contestantname}</Text>
+                <Text style={styles.profname}>{times.coursename}</Text>
+                <Text style={styles.profname}>{times.time}</Text>
+              </View>
+            ))
+          ) : (
+            <Text>No Items Found Yet</Text>
+          )
+        }
       </View>
       <View style={styles.positionthree}>
-        <Image
-          style={styles.profimg} 
-          source={require('../assets/Dummy_avatar.png')}
-        />
-        <Text style={styles.profname}>Name</Text>
+        {
+          reslutTimesThree != [] ? (
+            reslutTimesThree.map((times, index) => (
+              <View key={index}>
+                <Text style={styles.profname}>{times.contestantname}</Text>
+                <Text style={styles.profname}>{times.coursename}</Text>
+                <Text style={styles.profname}>{times.time}</Text>
+              </View>
+            ))
+          ) : (
+            <Text>No Items Found Yet</Text>
+          )
+        }
       </View>
       <Image 
         style={styles.podium} 
         source={require('../assets/podium.png')}
       />
       <View style={styles.rest}>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>4</Text>
-        </View>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>5</Text>
-        </View>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>6</Text>
-        </View>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>7</Text>
-        </View>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>8</Text>
-        </View>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>9</Text>
-        </View>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>10</Text>
-        </View>
-        <View style={styles.contestant}>
-          <Text style={styles.number}>etc.</Text>
-        </View>
+        {
+          reslutTimes != [] ? (
+            reslutTimes.map((times, index) => (
+              <View style={styles.contestant} key={index}>
+                <Text style={styles.number}>{times.contestantname}</Text>
+                <Text style={styles.number}>{times.coursename}</Text>
+                <Text style={styles.number}>{times.time}</Text>
+              </View>
+            ))
+          ) : (
+            <Text>No Items Found Yet</Text>
+          )
+        }
       </View>
     </ScrollView>
   )
@@ -130,14 +168,14 @@ const styles = StyleSheet.create({
   },
   contestant: {
     flexDirection: 'row',
-    paddingLeft: 20,
+    paddingLeft: 10,
     backgroundColor: 'rgba(166, 69, 16, 0.2)',
     marginBottom: 12
   },
   number: {
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: '500',
-    marginRight: 70,
+    marginRight: 17,
     color: '#FFA948'
   }
 })

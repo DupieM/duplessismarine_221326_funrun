@@ -1,5 +1,5 @@
 // Firestore functionality
-import {  collection, addDoc, getDocs, orderBy, query, doc, setDoc } from "firebase/firestore"
+import {  collection, addDoc, getDocs, orderBy, query, doc, setDoc, where, limit } from "firebase/firestore"
 import { db } from "../firebase";
 
 //Create rest of user information from sign up page
@@ -71,4 +71,90 @@ export const createNewTime = async (time) => {
     }
 }
 
-// Get time for results page
+// Get the time for 1ste place
+export const getTimeReslutsone = async () => {
+
+    var allTimes = [] //array that we want to return
+
+    // Getting the data from Firestore
+    // var q = query( )
+    const collectionRef =collection(db, "results");
+
+    const q = query(collectionRef, where("time", ">", "30,00"), limit(1))
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        allTimes.push({...doc.data(), id: doc.id}); //push each docs' data to the array I wnat to return
+        // console.log(doc.data())
+    });
+
+    // console.log(allCourses)
+
+    return allTimes
+}
+
+// Get the time for 2nd place
+export const getTimeReslutssecond = async () => {
+
+    var allTimes = [] //array that we want to return
+
+    // Getting the data from Firestore
+    // var q = query( )
+    const collectionRef =collection(db, "results");
+
+    const q = query(collectionRef, where("time", ">", "50,00"), limit(1))
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        allTimes.push({...doc.data(), id: doc.id}); //push each docs' data to the array I wnat to return
+        // console.log(doc.data())
+    });
+
+    // console.log(allCourses)
+
+    return allTimes
+}
+
+// Get the time for 3rd place
+export const getTimeReslutsthird = async () => {
+
+    var allTimes = [] //array that we want to return
+
+    // Getting the data from Firestore
+    // var q = query( )
+    const collectionRef =collection(db, "results");
+
+    const q = query(collectionRef, where("time", ">", "55,00"), limit(1))
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        allTimes.push({...doc.data(), id: doc.id}); //push each docs' data to the array I wnat to return
+        // console.log(doc.data())
+    });
+
+    // console.log(allCourses)
+
+    return allTimes
+}
+
+// Get the time for rest place
+export const getTimeResluts = async () => {
+
+    var allTimes = [] //array that we want to return
+
+    // Getting the data from Firestore
+    // var q = query( )
+    const collectionRef =collection(db, "results");
+
+    const q = query(collectionRef, where("time", ">=", "1,00,00"), limit(9))
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        allTimes.push({...doc.data(), id: doc.id}); //push each docs' data to the array I wnat to return
+        // console.log(doc.data())
+    });
+
+    // console.log(allCourses)
+
+    return allTimes
+}

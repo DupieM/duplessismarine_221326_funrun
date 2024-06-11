@@ -19,16 +19,21 @@ function EntryScreen({ route, navigation }) {
   const [selectedCourse, setSelectedCourse] = useState("")
 
   const [isFormValid, setIsFormValid] = useState(false);
+  useEffect(() => {
+    // Check if all required fields are filled
+    if (con_name.trim() && skill_level.trim() && age.trim() && height.trim() && selectedCourse.trim()) {
+        setIsFormValid(true);
+    } else {
+        setIsFormValid(false);
+    }
+}, [con_name, skill_level, age, height, selectedCourse]);
+
   const handleCreation = async () => {
-    
-    useEffect(() => {
-      // Check if all required fields are filled
-      if (con_name.trim() && skill_level.trim() && age.trim() && height.trim() && selectedCourse.trim()) {
-          setIsFormValid(true);
-      } else {
-          setIsFormValid(false);
-      }
-  }, [con_name, skill_level, age, height, selectedCourse]);
+
+  if (!isFormValid) {
+    Alert.alert("Validation Error", "Please fill all the required fields.");
+    return;
+  }
 
 
     //create new entry for the specific course
