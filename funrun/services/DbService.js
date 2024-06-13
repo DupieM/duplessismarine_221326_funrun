@@ -80,7 +80,8 @@ export const getTimeReslutsone = async () => {
     // var q = query( )
     const collectionRef =collection(db, "results");
 
-    const q = query(collectionRef, where("time", ">", "30,00"), limit(1))
+    const q = query(collectionRef, where("time", "==", "30,40"), limit(1))
+
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -102,7 +103,7 @@ export const getTimeReslutssecond = async () => {
     // var q = query( )
     const collectionRef =collection(db, "results");
 
-    const q = query(collectionRef, where("time", ">", "50,00"), limit(1))
+    const q = query(collectionRef, where("time", ">", "40,00"), limit(1))
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -124,7 +125,7 @@ export const getTimeReslutsthird = async () => {
     // var q = query( )
     const collectionRef =collection(db, "results");
 
-    const q = query(collectionRef, where("time", ">", "55,00"), limit(1))
+    const q = query(collectionRef, where("time", ">", "46,00"), limit(1))
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -146,7 +147,7 @@ export const getTimeResluts = async () => {
     // var q = query( )
     const collectionRef =collection(db, "results");
 
-    const q = query(collectionRef, where("time", ">=", "1,00,00"), limit(9))
+    const q = query(collectionRef, where("time", ">", "1,00,00"), orderBy("time", "asc"), limit(9))
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

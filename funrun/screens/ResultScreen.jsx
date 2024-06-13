@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { getTimeResluts, getTimeReslutsone, getTimeReslutssecond, getTimeReslutsthird } from '../services/DbService';
+import { getTimeReslut, getTimeResluts, getTimeReslutsone, getTimeReslutssecond, getTimeReslutsthird } from '../services/DbService';
+import { useFocusEffect } from '@react-navigation/native';
 
 function ResultScreen() {
 
@@ -23,17 +24,17 @@ function ResultScreen() {
     setReslutTimesOne(allData)
   }
 
-  //getting reslut data for 2nd place
-  const handleGettingOfData_Two = async () => {
-    var allData = await getTimeReslutssecond()
-    setReslutTimesTwo(allData)
-  }
+//getting reslut data for 2nd place
+const handleGettingOfData_Two = async () => {
+  var allData = await getTimeReslutssecond()
+  setReslutTimesTwo(allData)
+}
 
-  //getting reslut data for 3rd place
-  const handleGettingOfData_Three = async () => {
-    var allData = await getTimeReslutsthird()
-    setReslutTimesThree(allData)
-  }
+//getting reslut data for 3rd place
+const handleGettingOfData_Three = async () => {
+  var allData = await getTimeReslutsthird()
+  setReslutTimesThree(allData)
+}
 
   //getting reslut data for 3rd place
   const handleGettingOfData = async () => {
@@ -44,11 +45,12 @@ function ResultScreen() {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Results Board</Text>
-      <View style={styles.positionone}>
-        <Image
+      <View style={styles.box}/>
+      <Image
           style={styles.crown} 
           source={require('../assets/crown.png')}
         />
+      <View style={styles.positionone}> 
         {
           reslutTimesOne != [] ? (
             reslutTimesOne.map((times, index) => (
@@ -131,6 +133,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: "#194D10"
   },
+  box: {
+    backgroundColor: '#B9E79C',
+    height: 40
+  },
+  crown: {
+    width: 95,
+    height: 86,
+    marginLeft: 130
+  },
   positionone: {
     marginTop: 30,
     marginLeft: 130
@@ -149,28 +160,24 @@ const styles = StyleSheet.create({
     width: 80,
     marginTop: 10
   },
-  crown: {
-    width: 95,
-    height: 86
-  },
   profname: {
     marginLeft: 12,
     fontSize: 28,
   },
   podium: {
-    marginTop: -135,
+    marginTop: -127,
     width: 360,
     height: 320
   },
   rest: {
     backgroundColor: '#263A38',
-    padding: 12
+    padding: 12,
   },
   contestant: {
     flexDirection: 'row',
     paddingLeft: 10,
     backgroundColor: 'rgba(166, 69, 16, 0.2)',
-    marginBottom: 12
+    marginBottom: 15
   },
   number: {
     fontSize: 25,

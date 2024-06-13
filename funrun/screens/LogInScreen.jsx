@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, Image, ScrollView, TextInput, TouchableOpacity,
 import React, { useEffect, useState } from 'react'
 import { Link } from 'expo-router';
 import { googlesignin, handleLogin } from '../services/authService';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 function LogInScreen({ navigation }) {
 

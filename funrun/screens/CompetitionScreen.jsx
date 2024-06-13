@@ -14,6 +14,7 @@ function CompetitionScreen({ navigation }) {
   const handleGettingOfData = async () => {
     var allData = await getMyCourseList()
     setCourseItems(allData)
+    console.log(allData[1].image)
   }
 
 
@@ -37,7 +38,7 @@ function CompetitionScreen({ navigation }) {
                 }}>
                 <Image
                   style={styles.courseimg} 
-                  source={require('../assets/Course_1.jpg')}
+                  source={{uri: course.image}}
                 />
                 <View style={styles.subcoursename}>
                   <Text style={styles.mainhead}>{course.name}</Text>

@@ -1,9 +1,10 @@
 // Firebase Auth Functions
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { GoogleAuthProvider, getAuth, signInWithPopup,} from "firebase/auth";
 import { createUserInformation } from "./DbService";
+
+
 
 // Log In
 export const handleLogin = async (email, password) => {
@@ -26,6 +27,8 @@ export const handleLogin = async (email, password) => {
 // Google Signing
 
 export const googlesignin = () => {
+  const provider = new GoogleAuthProvider();
+  
   signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.

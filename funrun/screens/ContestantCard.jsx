@@ -56,7 +56,7 @@ const ContestantCard = ({course, navigation}) => {
               onPress={() => {
               navigation.navigate("Judging", { // Navigate to the detail screen with the specific params
                 itemId: item.id,
-                itemName: item.con_name,
+                contestantName: item.con_name,
                 courseName: course.name,
               })
             }}>

@@ -5,7 +5,7 @@ import { createNewTime } from '../services/DbService';
 function JudgingScreen({ navigation, route }) {
 
   //Retrive the params from the contestant screen
-  const { itemName, courseName } = route.params;
+  const { contestantName, courseName } = route.params;
 
   //creating variables for input fields
   const [coursename, setCourseName] = useState('');
@@ -15,12 +15,12 @@ function JudgingScreen({ navigation, route }) {
   const [isFormValid, setIsFormValid] = useState(false);
     useEffect(() => {
         // Check if all required fields are filled
-        if (coursename.trim() && contestantname.trim() && time.trim()) {
+        if (time.trim()) {
             setIsFormValid(true);
         } else {
             setIsFormValid(false);
         }
-    }, [coursename, contestantname, time]);
+    }, [time]);
 
   //Creating the time entry per contestant and coirse
   const handleCreation = async () => {
@@ -32,8 +32,8 @@ function JudgingScreen({ navigation, route }) {
   }
 
     // 
-    var times = {coursename, contestantname, time}
-    var success = await createNewTime(times)
+    var times = {time}
+    var success = await createNewTime(contestantName, courseName, times)
     if(success){
       Alert.alert("Success", "You have finished judging this contestant");
       navigation.goBack();
@@ -48,16 +48,14 @@ function JudgingScreen({ navigation, route }) {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Judging</Text>
       <View style={styles.enterfield}>
-        <TextInput style={styles.enter}
-          onChangeText={itemName => setContestantName(itemName)}
-          defaultValue={itemName}
-        />
+        <Text style={styles.enter}>
+          {contestantName}
+        </Text>
       </View>
       <View style={styles.enterfield}>
-        <TextInput style={styles.enter}
-          onChangeText={newText => setCourseName(newText)}
-          defaultValue={courseName}
-        />
+        <Text style={styles.enter}>
+          {courseName}
+        </Text>
       </View>
       <View style={styles.box1}>
         <Text style={styles.enter2}>Life Timer</Text>
