@@ -43,8 +43,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#B9E79C"
   },
   title: {
-    fontSize: 50,
-    fontWeight: 'bold',
+    fontFamily:'PoetsenOne',
+    fontSize: 53,
+    fontWeight: '500',
     color: "#194D10",
     textAlign: 'center',
     marginTop: 30,

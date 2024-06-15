@@ -98,7 +98,7 @@ function EntryScreen({ route, navigation }) {
                 {/* Update to data from db */}
                 {courses != [] ? (
                     courses.map((course) => (
-                        <Picker.Item key={course.id} label={course.name} value={course.id} />
+                        <Picker.Item fontFamily='Itim' key={course.id} label={course.name} value={course.id} />
                     ))
                 ) : null }    
         </Picker>
@@ -116,6 +116,8 @@ function EntryScreen({ route, navigation }) {
             selectedTextStyle={styles.selectedTextStyle}
             data={data}
             maxHeight={300}
+            fontFamily='Itim'
+            fontSize={50}
             labelField="label"
             valueField="value"
             placeholder='Choose Skill Level'
@@ -129,17 +131,19 @@ function EntryScreen({ route, navigation }) {
             }}
           />
       </View>
-      <View style={styles.enterfield}>
-        <TextInput style={styles.enter2} placeholder='Age' keyboardType='numeric' placeholderTextColor="#00272E"
-          onChangeText={newText => setAge(newText)}
-          defaultValue={null}
-        />
-      </View>
-      <View style={styles.enterfield}>
-        <TextInput style={styles.enter2} placeholder='Height' placeholderTextColor="#00272E"
-          onChangeText={newText => setHeight(newText)}
-          defaultValue={null}
-        />
+      <View>
+        <View style={styles.enterfield}>
+          <TextInput style={styles.enter2} placeholder='Age' keyboardType='numeric' placeholderTextColor="#00272E"
+            onChangeText={newText => setAge(newText)}
+            defaultValue={null}
+          />
+        </View>
+        <View style={styles.enterfield2}>
+          <TextInput style={styles.enter3} placeholder='Height' placeholderTextColor="#00272E"
+            onChangeText={newText => setHeight(newText)}
+            defaultValue={null}
+          />
+        </View>
       </View>
       <TouchableOpacity style={styles.Btn} onPress={handleCreation}>
           <Text style={styles.Btntext}>Enter</Text>
@@ -154,40 +158,46 @@ export default EntryScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#B9E79C"
+    backgroundColor: "#B9E79c"
   },
   title: {
-    marginTop: 30,
+    fontFamily:'PoetsenOne',
+    marginTop: 37,
     marginBottom: 15,
-    fontSize: 50,
-    fontWeight: 'bold',
+    fontSize: 55,
+    fontWeight: '500',
     color: "#194D10",
     textAlign: 'center'
   },
   infobox: {
     backgroundColor: "rgba(122, 153, 102, 0.4)",
-    height: 167,
+    height: 220,
     width: 300,
     padding: 10,
     marginLeft: 30,
+    justifyContent: 'center'
   },
   subhead: {
     fontSize: 22,
     color: "#A64510",
     textAlign: 'center',
+    fontFamily:'Itim',
   },
   subtitle: {
+    fontFamily:'Itim',
     marginTop: 20,
     marginBottom: 20,
     fontSize: 40,
-    fontWeight: '400',
+    fontWeight: '500',
     color: "#00272E",
     textAlign: 'center'
   },
   enterfield: {
-    marginBottom: 18
+    marginBottom: 18,
+    borderRadius: 30,
   },
   enter: {
+    fontFamily:'Itim',
     backgroundColor: 'rgba(255, 191, 96, 0.7)',
     height: 60,
     fontSize: 18,
@@ -198,12 +208,44 @@ const styles = StyleSheet.create({
     width: '80%',
     color: '#00272E',
   },
+  dropdown: {
+    fontFamily:'Itim',
+    height: 50,
+    backgroundColor: 'rgba(255, 191, 96, 0.7)',
+    height: 60,
+    width: '80%',
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginLeft: 35,
+    borderRadius: 30,
+    paddingLeft: 20,
+    paddingRight: 10,
+  },
   subtext: {
     fontSize: 16,
     marginTop: 6,
     marginLeft: 35
   },
+  enterfield2: {
+    marginTop: -79,
+    marginLeft: 150,
+    marginBottom: 18,
+    borderRadius: 30,
+  },
   enter2: {
+    fontFamily:'Itim',
+    backgroundColor: 'rgba(255, 191, 96, 0.7)',
+    height: 60,
+    fontSize: 18,
+    paddingLeft: 20,
+    paddingRight: 10,
+    marginLeft: 75,
+    borderRadius: 30,
+    width: '25%',
+    color: '#00272E',
+  },
+  enter3: {
+    fontFamily:'Itim',
     backgroundColor: 'rgba(255, 191, 96, 0.7)',
     height: 60,
     fontSize: 18,
@@ -211,7 +253,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     marginLeft: 35,
     borderRadius: 30,
-    width: '25%',
+    width: '45%',
     color: '#00272E',
   },
   Btn: {
@@ -223,8 +265,9 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   Btntext: {
-    fontSize: 25,
-    fontWeight: '900',
+    fontFamily:'PoetsenOne',
+    fontSize: 30,
+    fontWeight: '400',
     textAlign: 'center',
     color: '#FFA948'
   },

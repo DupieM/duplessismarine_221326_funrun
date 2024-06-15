@@ -120,7 +120,7 @@ function JudgingScreen({ navigation, route }) {
                 style={[styles.button, styles.resetButton]} 
                 onPress={resetStopwatch} 
               > 
-                <Text style={styles.buttonText}> 
+                <Text style={styles.buttonText2}> 
                   Reset 
                 </Text> 
               </TouchableOpacity>
@@ -131,7 +131,7 @@ function JudgingScreen({ navigation, route }) {
               style={[styles.button, styles.resumeButton]} 
               onPress={resumeStopwatch} 
             > 
-              <Text style={styles.buttonText}> 
+              <Text style={styles.buttonText3}> 
                 Resume 
               </Text> 
             </TouchableOpacity> 
@@ -166,8 +166,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#B9E79C"
   },
   title: {
-    fontSize: 50,
-    fontWeight: 'bold',
+    fontFamily:'PoetsenOne',
+    fontSize: 53,
+    fontWeight: '5',
     color: "#194D10",
     textAlign: 'center',
     marginTop: 30,
@@ -177,9 +178,10 @@ const styles = StyleSheet.create({
     marginBottom: 18,
   },
   enter: {
+    fontFamily:'Itim',
     backgroundColor: 'rgba(255, 191, 96, 0.3)',
     height: 50,
-    fontSize: 32,
+    fontSize: 35,
     padding: 2,
     paddingLeft: 20,
     marginLeft: 35,
@@ -188,15 +190,17 @@ const styles = StyleSheet.create({
     color: '#00272E',
   },
   enter2: {
+    fontFamily:'Itim',
+    fontWeight: '600',
     height: 60,
-    fontSize: 32,
+    fontSize: 35,
     padding: 8,
     marginLeft: 10,
     borderRadius: 10,
     color: '#FFA948',
   },
   box1: {
-    height: 250,
+    height: 270,
     width: '80%',
     backgroundColor: 'rgba(25, 77, 16, 0.8)',
     marginLeft: 35,
@@ -228,49 +232,67 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   Btntext: {
+    fontFamily:'PoetsenOne',
     fontSize: 25,
-    fontWeight: '600',
+    fontWeight: '500',
     textAlign: 'center',
     color: '#FFA948'
   },
   enter3 : {
+    fontFamily:'Itim',
     backgroundColor: 'rgba(255, 191, 96, 0.3)',
     width: '90%',
     textAlign: 'center',
-    padding: 0,
+    paddingTop: 0,
     fontSize: 60,
     marginLeft: 15,
     marginTop: 10,
     marginBottom: 17
   },
   timeText: { 
-    fontSize: 48, 
+    fontSize: 60, 
+    textAlign: 'center',
+    fontFamily:'PoetsenOne',
+    color: '#FFBF60'
   }, 
   buttonContainer: { 
     flexDirection: 'row', 
-    marginTop: 20, 
+    marginTop: 10, 
+    marginBottom: 20,
+    marginLeft: 10
   }, 
   button: { 
-    paddingVertical: 10, 
-    paddingHorizontal: 20, 
+    paddingVertical: 9, 
+    paddingHorizontal: 9, 
     borderRadius: 5, 
   }, 
   startButton: { 
-    backgroundColor: '#2ecc71', 
-    marginRight: 10, 
+    backgroundColor: "#B9E79C", 
+    marginRight: 9,
   }, 
   resetButton: { 
-    backgroundColor: '#e74c3c', 
-    marginRight: 10, 
+    backgroundColor: '#FFA948', 
+    marginRight: 9, 
   }, 
   pauseButton: { 
-    backgroundColor: '#f39c12', 
+    backgroundColor: '#B9E79C', 
   }, 
   resumeButton: { 
-    backgroundColor: '#3498db', 
+    backgroundColor: '#1B666B', 
   }, 
   buttonText: { 
-    color: 'white', 
-    fontSize: 16, 
+    color: '#194D10', 
+    fontSize: 23,
+    fontWeight: '800' 
+  }, 
+  buttonText2: { 
+    color: '#263A38', 
+    fontSize: 23,
+    fontWeight: '800' 
+  }, 
+  buttonText3: { 
+    color: '#00272E', 
+    fontSize: 23,
+    fontWeight: '800' 
   }, 
 })

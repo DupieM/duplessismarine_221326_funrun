@@ -67,17 +67,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#B9E79C"
   },
   title: {
-    fontFamily:'Itim',
-    marginTop: 30,
-    fontSize: 38,
+    fontFamily:'PoetsenOne',
+    marginTop: 38,
+    fontSize: 37,
     fontWeight: '500',
     color: "#194D10",
     textAlign: 'center'
   },
   subtitle: {
-
-    fontSize: 28,
-    fontWeight: '500',
+    fontFamily:'Itim',
+    fontSize: 32,
+    fontWeight: '600',
     color: "#A64510",
     textAlign: 'center',
     marginTop: 10
@@ -101,8 +101,9 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   mainhead: {
+    fontFamily:'Itim',
     color: '#FFECEC',
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: '600',
     marginRight: 7,
   },

@@ -97,9 +97,10 @@ const styles = StyleSheet.create({
     paddingTop: 0.5,
   },
   mainhead: {
+    fontFamily:'PoetsenOne',
     color: '#194D10',
-    fontSize: 60,
-    fontWeight: 'bold',
+    fontSize: 66,
+    fontWeight: '500',
     textAlign: 'center',
     marginTop: 7,
     marginBottom: 7,
@@ -108,9 +109,10 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   search: {
+    fontFamily:'Itim',
     backgroundColor: '#FFBF60',
     height: 60,
-    fontSize: 18,
+    fontSize: 23,
     paddingLeft: 20,
     paddingRight: 10,
     marginLeft: 35,
@@ -119,6 +121,7 @@ const styles = StyleSheet.create({
     color: '#00272E',
   },
   password: {
+    fontFamily:'PoetsenOne',
     marginLeft: 50,
     marginTop: 5,
     marginBottom: 27,
@@ -134,8 +137,9 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   Btntext: {
-    fontSize: 25,
-    fontWeight: '900',
+    fontFamily:'PoetsenOne',
+    fontSize: 30,
+    fontWeight: '400',
     textAlign: 'center',
     color: '#FFA948'
   },
@@ -144,10 +148,12 @@ const styles = StyleSheet.create({
     marginLeft: 77
   },
   signup: {
+    fontFamily:'PoetsenOne',
     textAlign: 'center',
     color: '#194D10'
   },
   link: {
+    fontFamily:'PoetsenOne',
     marginLeft: 6,
     textAlign: 'center',
     color: '#194D10',
@@ -155,6 +161,7 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   subhead: {
+    fontFamily:'Itim',
     color: '#194D10',
     fontSize: 30,
     fontWeight: '500',

@@ -81,11 +81,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#B9E79C"
   },
   title: {
-    fontSize: 50,
-    fontWeight: 'bold',
+    fontFamily:'PoetsenOne',
+    fontSize: 55,
+    fontWeight: '500',
     color: "#194D10",
     textAlign: 'center',
-    marginTop: 30
+    marginTop: 37
   },
   profimg: {
     height: 210,
@@ -109,9 +110,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   enter: {
+    fontFamily:'Itim',
     backgroundColor: 'rgba(255, 191, 96, 0.3)',
     height: 50,
-    fontSize: 32,
+    fontSize: 35,
     padding: 2,
     paddingLeft: 20,
     marginLeft: 35,
@@ -120,6 +122,7 @@ const styles = StyleSheet.create({
     color: '#00272E',
   },
   subhead: {
+    fontFamily:'PoetsenOne',
     fontSize: 37,
     fontWeight: '500',
     color: "#A64510",
@@ -150,8 +153,9 @@ const styles = StyleSheet.create({
     marginRight: 35
   },
   number: {
-    fontSize: 28,
-    fontWeight: '500',
+    fontFamily:'Itim',
+    fontSize: 29,
+    fontWeight: '600',
     marginRight: 33,
     color: '#00272E'
   },
@@ -165,8 +169,9 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   btntext: {
+    fontFamily:'PoetsenOne',
     fontSize: 30,
-    fontWeight: '900',
+    fontWeight: '400',
     textAlign: 'center',
     color: '#FFA948'
   },

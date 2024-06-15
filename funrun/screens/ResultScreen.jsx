@@ -84,10 +84,10 @@ const handleGettingOfData_Three = async () => {
         {
           reslutTimesThree != [] ? (
             reslutTimesThree.map((times, index) => (
-              <View key={index}>
-                <Text style={styles.profname}>{times.contestantname}</Text>
-                <Text style={styles.profname}>{times.coursename}</Text>
-                <Text style={styles.profname}>{times.time}</Text>
+              <View style={styles.places} key={index}>
+                <Text style={styles.profname2}>{times.contestantname}</Text>
+                <Text style={styles.profname2}>{times.coursename}</Text>
+                <Text style={styles.profname2}>{times.time}</Text>
               </View>
             ))
           ) : (
@@ -127,10 +127,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#B9E79C"
   },
   title: {
+    fontFamily:'PoetsenOne',
     textAlign: 'center',
-    marginTop: 37,
-    fontSize: 50,
-    fontWeight: 'bold',
+    marginTop: 39,
+    fontSize: 52,
+    fontWeight: '500',
     color: "#194D10"
   },
   box: {
@@ -148,20 +149,25 @@ const styles = StyleSheet.create({
   },
   positiontwo: {
     marginLeft: 6,
-    marginTop: -40
+    marginTop: -40,
+    marginBottom: 9
   },
   positionthree: {
     marginLeft: 255,
     marginTop: -70
   },
-  profimg: {
-    marginLeft: 8,
-    height: 80,
-    width: 80,
-    marginTop: 10
-  },
   profname: {
-    marginLeft: 12,
+    color: "#194D10",
+    fontFamily:'Itim',
+    textAlign: 'center',
+    marginLeft: -240,
+    fontSize: 28,
+  },
+  profname2: {
+    color: "#194D10",
+    fontFamily:'Itim',
+    textAlign: 'center',
+    marginLeft: -10,
     fontSize: 28,
   },
   podium: {
@@ -174,12 +180,14 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   contestant: {
+    justifyContent: 'center',
     flexDirection: 'row',
     paddingLeft: 10,
     backgroundColor: 'rgba(166, 69, 16, 0.2)',
     marginBottom: 15
   },
   number: {
+    fontFamily:'Itim',
     fontSize: 25,
     fontWeight: '500',
     marginRight: 17,

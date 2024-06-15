@@ -102,16 +102,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#B9E79C"
   },
   title: {
+    fontFamily:'PoetsenOne',
     fontSize: 50,
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: "#194D10",
     textAlign: 'center',
     marginTop: 30,
     marginBottom: 10
   },
   subtitle: {
-    fontSize: 35,
-    fontWeight: 'bold',
+    fontFamily:'Itim',
+    fontSize: 38,
+    fontWeight: '500',
     color: "#1B666B",
     textAlign: 'left',
     marginBottom: 6,
@@ -120,8 +122,9 @@ const styles = StyleSheet.create({
     marginTop: -8
   },
   subtitle2: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontFamily:'Itim',
+    fontSize: 32,
+    fontWeight: '500',
     color: "#1B666B",
     textAlign: 'left',
     marginBottom: 6,
@@ -134,13 +137,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#263A38',
     width: 200,
     marginLeft: 85,
-    padding: 6,
+    padding: 9,
     borderRadius: 50,
     marginBottom: 30
   },
   btntext: {
-    fontSize: 30,
-    fontWeight: '900',
+    fontFamily:'PoetsenOne',
+    fontSize: 35,
+    fontWeight: '500',
     textAlign: 'center',
     color: '#FFA948'
   },

@@ -108,14 +108,14 @@ function SignUpScreen({ navigation }) {
             }}
           />
         </View>
-        <View style={styles.switch}>
+        <View style={styles.switchbox}>
           <Switch
             trackColor={{false: 'black', true: 'green'}}
             thumbColor={isAdmin ? 'yellow' : 'white'}
             ios_backgroundColor="#3e3e3e"
             onValueChange={(toggle) => setIsAdmin(toggle)}
           />
-            <Text>Priority?</Text>
+            <Text style={styles.switch}>Admin?</Text>
           </View>
         <TouchableOpacity style={styles.Btn} onPress={handleCreation}>
           <Text style={styles.Btntext}>Sign Up</Text>
@@ -145,9 +145,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   mainhead: {
+    fontFamily:'PoetsenOne',
     color: '#194D10',
     fontSize: 50,
-    fontWeight: 'bold',
+    fontWeight: '500',
     textAlign: 'center',
     marginTop: 7,
     marginBottom: 30
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   search: {
+    fontFamily:'Itim',
     backgroundColor: '#FFBF60',
     height: 60,
     fontSize: 18,
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   dropdown: {
+    fontFamily:'Itim',
     height: 50,
     backgroundColor: '#FFBF60',
     height: 60,
@@ -187,6 +190,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#00272E',
   },
+  switchbox: {
+    marginRight: 40
+  },
+  switch: {
+    fontFamily:'Itim',
+    fontSize: 20,
+    marginTop: -35,
+    marginBottom: 30,
+    marginLeft: 40
+  },
   Btn: {
     backgroundColor: '#263A38',
     width: 200,
@@ -196,12 +209,14 @@ const styles = StyleSheet.create({
     marginBottom: 17
   },
   Btntext: {
-    fontSize: 25,
-    fontWeight: '900',
+    fontFamily:'PoetsenOne',
+    fontSize: 30,
+    fontWeight: '400',
     textAlign: 'center',
     color: '#FFA948'
   },
   subhead: {
+    fontFamily:'Itim',
     color: '#194D10',
     fontSize: 30,
     fontWeight: '500',

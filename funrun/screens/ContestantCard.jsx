@@ -97,12 +97,13 @@ const styles = StyleSheet.create({
       padding: 8
     },
     enter: {
+      fontFamily:'Itim',
       backgroundColor: 'rgba(166, 69, 16, 1)',
       height: 44,
-      fontSize: 25,
+      fontSize: 30,
       fontWeight: '500',
       paddingLeft: 1,
-      paddingTop: 4,
+      paddingTop: 2,
       marginRight: 7,
       marginBottom: 8,
       borderRadius: 10,
