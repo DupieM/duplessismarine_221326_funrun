@@ -111,7 +111,7 @@ const handleSignout = () => {
         {
             course.length > 0 ? (
               course.map((results, index) => (
-                <View key={index}>
+                <View style={styles.contestantbox} key={index}>
                   <Text style={styles.number}>{results.coursename}</Text>
                   <Text style={styles.number}>{results.time}</Text>
                 </View>
@@ -208,6 +208,9 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     marginLeft: 35,
     marginRight: 35
+  },
+  contestantbox: {
+    flexDirection: 'row',
   },
   number: {
     fontFamily:'Itim',
