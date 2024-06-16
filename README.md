@@ -8,7 +8,7 @@
 <p align="center">
 
   <a href="https://github.com/username/projectname">
-    <img src="path/to/logo" alt="Logo" width="140" height="140">
+    <img src="readme_images_&_video/appicon.png" alt="Logo" width="140px" height="140px">
   </a>
   
   <h3 align="center">FunRun</h3>
@@ -72,6 +72,9 @@ This term we were tasked to create a .
 
 ### Built With
 
+* <a href="https://expo.dev/">![Static Badge](https://img.shields.io/badge/expo-url?style=for-the-badge&logo=expo&logoColor=white&color=black)</a>
+* <a href="https://firebase.google.com/">![Static Badge](https://img.shields.io/badge/firebase-url?style=for-the-badge&logo=firebase&color=white)</a>
+* <a href="https://reactnative.dev/">![Static Badge](https://img.shields.io/badge/react%20native-url?style=for-the-badge&logo=react&color=black)</a>
 * <a href="https://github.com/"> ![Static Badge](https://img.shields.io/badge/Github-url?style=for-the-badge&logo=github&color=purple)</a>
 * <a href="https://code.visualstudio.com/"> ![Static Badge](https://img.shields.io/badge/visual%20studio-url?style=for-the-badge&logo=visual%20studio&logoColor=blue&color=black&link=https%3A%2F%2Fcode.visualstudio.com%2F)</a>
 
