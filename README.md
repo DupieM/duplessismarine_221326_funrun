@@ -95,7 +95,7 @@ Clone the project repository as follow:
 
 1. Go to Github Desktop and then click on clone new repository
 
-2. Enter `` into the URL field and press the `Clone` button.
+2. Enter `https://github.com/DupieM/duplessismarine_221326_funrun.git` into the URL field and press the `Clone` button.
 
 To start the Expo app and install dependancies on laptop:
 
@@ -110,10 +110,10 @@ To start the Expo app and install dependancies on laptop:
    Enter 'npm install' to get all the dependencies
 
 3.  Install latest Expo version </br>
-   Enter '' to get latest version
+   Enter 'npm install expo@latest' to get latest version
 
 3.  Start the Expo server </br>
-   Enter '' to start Expo
+   Enter 'npm start' to start Expo
 
 To start the Expo app on a phone:
 
@@ -182,7 +182,7 @@ A marshall will be able to change the availability of a course with a toggle.
 
 ### ER-Diagram
 
-<img src="readme_images_&_video/erd.png" width="1000px"
+<img src="readme_images_&_video/erd.png" width="1000px">
 
 <!-- DEVELOPMENT PROCESS -->
 
@@ -247,9 +247,9 @@ The `Development Process` is the technical implementations and functionality don
 
 ![image9](readme_images_&_video/Mockup_2.png)
 <br>
-![image10](readme_images_&_video/Wireframe_2.png)
+![image10](readme_images_&_video/Mockup_3.png)
 <br>
-![image11](readme_images_&_video/Wireframe_3.png)
+![image11](readme_images_&_video/Mockup_4.png)
 
 <!-- VIDEO DEMONSTRATION -->
 
@@ -257,7 +257,7 @@ The `Development Process` is the technical implementations and functionality don
 
 To see a run through of the application, click below:
 
-[View Demonstration](readme_images_&_video/221326_Mariné_du_Plessis_DV300_Demonstration_Walkthrough.mp4)
+[View Demonstration](https://drive.google.com/file/d/11IBTSpQxcS-qFlAkhB16VvUcIO3taRav/view?usp=sharing)
 
 <!-- ROADMAP -->
 
