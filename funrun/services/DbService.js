@@ -98,7 +98,7 @@ export const getTimeReslutsone = async () => {
     // var q = query( )
     const collectionRef =collection(db, "results");
 
-    const q = query(collectionRef, where("time", "==", "30,40"), limit(1))
+    const q = query(collectionRef, where("time", "==", "30,40"))
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

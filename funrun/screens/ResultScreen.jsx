@@ -55,8 +55,8 @@ const handleGettingOfData_Three = async () => {
           reslutTimesOne != [] ? (
             reslutTimesOne.map((times, index) => (
               <View key={index}>
-                <Text style={styles.profname}>{times.contestantname}</Text>
-                <Text style={styles.profname}>{times.coursename}</Text>
+                <Text style={styles.profname}>{times.contestantName}</Text>
+                <Text style={styles.profname}>{times.courseName}</Text>
                 <Text style={styles.profname}>{times.time}</Text>
               </View>
             ))

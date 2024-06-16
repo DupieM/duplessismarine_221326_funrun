@@ -1,8 +1,8 @@
 
 
 <!-- HEADER SECTION -->
-<h5 align="center" style="padding:0;margin:0;">Mariné du Pl</h5>
-<h5 align="center" style="padding:0;margin:0;">Student Number</h5>
+<h5 align="center" style="padding:0;margin:0;">Mariné du Plessis</h5>
+<h5 align="center" style="padding:0;margin:0;">221326</h5>
 <h6 align="center">Interactive Development 300</h6>
 </br>
 <p align="center">
@@ -15,7 +15,7 @@
 
   <p align="center">
     Your one stop to any obstacle course! <br>
-      <a href="https://github.com/username/projectname"><strong>Explore the docs »</strong></a>
+      <a href="https://github.com/DupieM/duplessismarine_221326_funrun"><strong>Explore the docs »</strong></a>
    <br />
    <br />
    <a href="path/to/demonstration/video">View Demo</a>
@@ -68,7 +68,8 @@
 
 ### Project Description
 
-This term we were tasked to create a .
+This term we were tasked to create and conceptualise a mobile application for any sort of competition of our choosing.
+This application will consist of complex front-end and back-end requirements, for the physical competition that I am holding. The mobile application I am creating will host a obstacle courses for participants to join and be able to win by having the fatest time.
 
 ### Built With
 
@@ -87,14 +88,14 @@ The following instructions will get you a copy of the project up and running on 
 
 ### Prerequisites
 
-Ensure that you have the latest version of [Software](path/to/where/they/can/download/software) installed on your machine. The [Plugin](path/to/where/they/can/download/plugin) plugin will also be required.
+Ensure that you have the latest version of [Expo](https://docs.expo.dev/get-started/create-a-project/) installed on your machine. The [Expo] app on Phone will also be required.
 
 ### How to install
 
 ### Installation
-Here are a couple of ways to clone this repo:
+Here is the way of cloning this repo:
 
-1. Software </br>
+1. GitHub Desktop </br>
 `Android Studio` -> `File` -> `New` -> `From Version Control` -> `Git`</br>
 Enter `https://github.com/username/projectname.git` into the URL field and press the `Clone` button.
 
