@@ -15,6 +15,7 @@ function ContestantScreen() {
      handleGettingOfData()
    }, [])
  
+   // get the specific data from the database
    const handleGettingOfData = async () => {
      var allData = await getMyCourseList()
      setCourseItems(allData)

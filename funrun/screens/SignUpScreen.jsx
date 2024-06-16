@@ -8,7 +8,7 @@ function SignUpScreen({ navigation }) {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   
-  const data = [
+  const data = [ // data for dropdown box
     { label: 'Contestant', value: 'Contestant' },
     { label: 'Marshall', value: 'Marshall' }
   ]
@@ -48,28 +48,6 @@ function SignUpScreen({ navigation }) {
         return;
       }
     };
-
-    // const signin = () => {
-    //   handleCreation = async () => {
-    //     //Need to pass all our data to the function
-
-    //     //Make sure all the values have been entered - show error/disable button
-    //     if (!isFormValid) {
-    //         Alert.alert("Validation Error", "Please fill all the required fields.");
-    //         return;
-    //     }
-
-    //     var infos = {name, role, email, password}
-    //     var success = await createUserInformation(infos)
-    //     if(success){
-    //       navigation.navigate('Home')
-    //     } else {
-    //         //Validation why
-    //         Alert.alert("Error", "Failed to create bucket list item.");
-    //     }
-    //   };
-    //   handleSignin(email, password);
-    // }
 
   return (
     <ScrollView style={styles.container}>

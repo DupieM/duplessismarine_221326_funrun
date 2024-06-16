@@ -10,6 +10,7 @@ function ProfileScreen() {
   //get User information
   const [user, setUser] = useState("");
 
+  // get the user.uid to make sure the right information ins displaye don the screen
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {

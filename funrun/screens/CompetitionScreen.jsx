@@ -11,6 +11,7 @@ function CompetitionScreen({ navigation }) {
     handleGettingOfData()
   }, [])
 
+  //getting the data
   const handleGettingOfData = async () => {
     var allData = await getMyCourseList()
     setCourseItems(allData)
