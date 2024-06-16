@@ -263,7 +263,7 @@ To see a run through of the application, click below:
 
 ## Roadmap
 
-See the [open issues](https://github.com/username/projectname/issues) for a list of proposed features (and known issues).
+See Future Implementation for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
