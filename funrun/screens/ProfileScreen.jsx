@@ -1,8 +1,74 @@
-import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { StyleSheet, View, Text, Button, Image, ScrollView, TouchableOpacity, TextInput } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { handleSignOut } from '../services/authService'
+import { auth, db } from '../firebase'
+import { onAuthStateChanged } from 'firebase/auth'
+import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore'
 
 function ProfileScreen() {
+
+  //get User information
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+
+          if (userDoc.exists()) {
+            setUser(userDoc.data());
+            console.log("Admin status: ", userDoc.data());
+          } else {
+            console.log("No such document!");
+            setUser(false);
+          }
+
+        } catch (error) {
+          console.error("Error fetching user document: ", error);
+        }
+        
+      } else {
+        setUser(false)
+        console.log("No user logged in...")
+      }  
+    })
+
+    return unsubscribe;
+  }, []);
+
+  //Getting course data folr specific
+  const [course, setCourse] = useState([]);
+
+  useEffect(() => {
+    if (user && user.name) {
+      const getCourses = async () => {
+        try {
+  
+          const collectionRef = collection(db, "results");
+          
+          const q = query(collectionRef, where("contestantname", "==", user.name));
+  
+          const querySnapshot = await getDocs(q);
+          const courses = [];
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            courses.push(doc.data());
+            console.log(doc.id, " => ", doc.data());
+          });
+          setCourse(courses);
+  
+        } catch (error) {
+          console.error("Error fetching user document: ", error);
+        }
+    };
+
+    getCourses();
+    
+  }
+
+  }, [user])
 
 // Logout
 const handleSignout = () => {
@@ -14,20 +80,20 @@ const handleSignout = () => {
       <Text style={styles.title}>My Page</Text>
       <Image 
         style={styles.profimg} 
-        source={require('../assets/Dummy_avatar.png')}
+        source={require('../assets/avatar.png')}
       />
       <Image 
         style={styles.addimg} 
         source={require('../assets/add.png')}
       />
       <View style={styles.enterfield}>
-        <Text style={styles.enter}>Name</Text>
+        <Text style={styles.enter}>{user.name}</Text>
       </View>
       <View style={styles.enterfield}>
-        <Text style={styles.enter}>Email</Text>
+        <Text style={styles.enter}>{user.email}</Text>
       </View>
       <View style={styles.enterfield2}>
-        <Text style={styles.enter}>Password</Text>
+        <TextInput style={styles.enter}>{user.password}</TextInput>
         <Image 
           style={styles.editimg} 
           source={require('../assets/edit.png')}
@@ -39,32 +105,23 @@ const handleSignout = () => {
           style={styles.badgeimg} 
           source={require('../assets/emblem.png')}
         />
-        <Image 
-          style={styles.badgeimg} 
-          source={require('../assets/emblem.png')}
-        />
       </View>
       <Text style={styles.subhead}>Previous Results</Text>
       <View style={styles.contestant}>
-          <Text style={styles.number}>OC-Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>1</Text>
+        {
+            course.length > 0 ? (
+              course.map((results, index) => (
+                <View key={index}>
+                  <Text style={styles.number}>{results.coursename}</Text>
+                  <Text style={styles.number}>{results.time}</Text>
+                </View>
+              ))
+            ) : (
+              <Text style={styles.number}>No courses found</Text>
+            )
+          }
       </View>
-      <View style={styles.contestant}>
-          <Text style={styles.number}>OC-Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>2</Text>
-      </View>
-      <View style={styles.contestant}>
-          <Text style={styles.number}>OC-Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>4</Text>
-      </View>
-      <View style={styles.contestant}>
-          <Text style={styles.number}>OC-Name</Text>
-          <Text style={styles.number}>Time</Text>
-          <Text style={styles.number}>9</Text>
-      </View>
+          
       <TouchableOpacity style={styles.btn} onPress={handleSignout}>
           <Text style={styles.btntext}>Sign Out</Text>
       </TouchableOpacity>
@@ -113,8 +170,8 @@ const styles = StyleSheet.create({
     fontFamily:'Itim',
     backgroundColor: 'rgba(255, 191, 96, 0.3)',
     height: 50,
-    fontSize: 35,
-    padding: 2,
+    fontSize: 31,
+    padding: 3,
     paddingLeft: 20,
     marginLeft: 35,
     borderRadius: 10,

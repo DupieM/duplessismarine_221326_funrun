@@ -36,6 +36,7 @@ export default function App() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
+
           const userDoc = await getDoc(doc(db, "users", user.uid));
 
           if (userDoc.exists()) {

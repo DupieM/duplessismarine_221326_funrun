@@ -70,9 +70,9 @@ const handleGettingOfData_Three = async () => {
           reslutTimesTwo != [] ? (
             reslutTimesTwo.map((times, index) => (
               <View key={index}>
-                <Text style={styles.profname}>{times.contestantname}</Text>
-                <Text style={styles.profname}>{times.coursename}</Text>
-                <Text style={styles.profname}>{times.time}</Text>
+                <Text style={styles.profname1}>{times.contestantname}</Text>
+                <Text style={styles.profname1}>{times.coursename}</Text>
+                <Text style={styles.profname1}>{times.time}</Text>
               </View>
             ))
           ) : (
@@ -144,19 +144,26 @@ const styles = StyleSheet.create({
     marginLeft: 130
   },
   positionone: {
-    marginTop: 30,
+    marginTop: 15,
     marginLeft: 130
   },
   positiontwo: {
     marginLeft: 6,
     marginTop: -40,
-    marginBottom: 9
+    marginBottom: 4
   },
   positionthree: {
     marginLeft: 255,
     marginTop: -70
   },
   profname: {
+    color: "#194D10",
+    fontFamily:'Itim',
+    textAlign: 'center',
+    marginLeft: -135,
+    fontSize: 28,
+  },
+  profname1: {
     color: "#194D10",
     fontFamily:'Itim',
     textAlign: 'center',
