@@ -5,19 +5,31 @@ import { useState } from "react";
 import Toggle from "react-native-toggle-element";
 import { getMyCourseList } from '../services/DbService';
 
+// To update course table
+import { updateDoc, doc } from 'firebase/firestore';
+import { db } from "../firebase";
+
 function ManagementScreen() {
 
   // Getting Courses
   const [courseItems, setCourseItems] = useState([]);
+
+  const [toggleStates, setToggleStates] = useState({}); // Individual toggle states
 
   useEffect(() => { //only running on first load, but when naviagting back doesn't rereander
     handleGettingOfData()
   }, [])
 
   const handleGettingOfData = async () => {
-    var allData = await getMyCourseList()
-    setCourseItems(allData)
-  }
+    const allData = await getMyCourseList();
+    setCourseItems(allData);
+    // Initialize toggle states based on course active status
+    const initialToggleStates = {};
+    allData.forEach(course => {
+      initialToggleStates[course.id] = course.active;
+    });
+    setToggleStates(initialToggleStates);
+  };
 
   // Logout
   const handleSignout = () => {
@@ -25,13 +37,16 @@ function ManagementScreen() {
   }
 
   // Toggle handler for individual course
-  const [toggleStates, setToggleStates] = useState({}); // Individual toggle states
-
-  const handleToggle = (courseId, newState) => {
+  const handleToggle = async (courseId, newState) => {
     setToggleStates(prevState => ({
       ...prevState,
-      [courseId]: newState // Update toggle state for specific course
+      [courseId]: newState, // Update toggle state for specific course
     }));
+    // Update Firestore with the new active status
+    const courseRef = doc(db, "courses", courseId);
+    await updateDoc(courseRef, {
+      active: newState,
+    });
   }
 
   return (
@@ -68,8 +83,8 @@ function ManagementScreen() {
               <Toggle
                   value={toggleStates[course.id] || false} // Use course-specific toggle state
                   onPress={(newState) => handleToggle(course.id, newState)}
-                  leftTitle="Open"
-                  rightTitle="Close"
+                  leftTitle="Close"
+                  rightTitle="Open"
                   trackBar={{
                     activeBackgroundColor: "#00272E",
                     inActiveBackgroundColor: "#023E48",

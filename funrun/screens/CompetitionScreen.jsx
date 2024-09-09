@@ -2,22 +2,24 @@ import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity, SafeAreaVi
 import React, { useEffect, useState } from 'react'
 import { getMyCourseList } from '../services/DbService';
 import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 
 function CompetitionScreen({ navigation }) {
 
   const [courseItems, setCourseItems] = useState([]);
 
-  useEffect(() => { //only running on first load, but when naviagting back doesn't rereander
-    handleGettingOfData()
-  }, [])
+  // Fetch data when screen is focused
+  useFocusEffect(
+    useCallback(() => {
+      const handleGettingOfData = async () => {
+        const allData = await getMyCourseList();
+        setCourseItems(allData);
+        console.log(allData[1].image)
+      };
 
-  //getting the data
-  const handleGettingOfData = async () => {
-    var allData = await getMyCourseList()
-    setCourseItems(allData)
-    console.log(allData[1].image)
-  }
-
+      handleGettingOfData();
+    }, [])
+  );
 
   return (
     <ScrollView style={styles.container}>
@@ -29,20 +31,26 @@ function CompetitionScreen({ navigation }) {
         {
           courseItems != [] ? (
             courseItems.map((course, index) => (
-              <TouchableOpacity key={index} style={styles.course}
+              <TouchableOpacity key={index} style={[styles.course, !course.active && styles.courseDisabled]}
                 onPress={() => {
-                  navigation.navigate("Entry", { // Navigate to the detail screen with the specific params
+                  if (course.active) { // Only allow navigation if course is active
+                    navigation.navigate("Entry", {
                       courseId: course.id,
                       courseName: course.name,
                       courseDescription: course.description,
-                  })
-                }}>
+                    });
+                  }
+                }}
+                disabled={!course.active} // Disable TouchableOpacity if course is inactive
+                >
                 <Image
                   style={styles.courseimg} 
                   source={{uri: course.image}}
                 />
                 <View style={styles.subcoursename}>
-                  <Text style={styles.mainhead}>{course.name}</Text>
+                  <Text style={styles.mainhead}>
+                    {course.name}
+                  </Text>
                   <Image
                     style={styles.courseimg2} 
                     source={require('../assets/ticket_icon.png')}
@@ -100,6 +108,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 10,
     marginLeft: 8,
+  },
+  courseDisabled: {
+    opacity: 0.5, // Lighter opacity for inactive courses
   },
   mainhead: {
     fontFamily:'Itim',
