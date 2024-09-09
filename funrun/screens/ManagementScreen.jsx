@@ -24,9 +24,15 @@ function ManagementScreen() {
     handleSignOut()
   }
 
-  //Toggle 
-  const [toggleValue, setToggleValue] = useState(false);
-  const [toggleValue1, setToggleValue1] = useState(true);
+  // Toggle handler for individual course
+  const [toggleStates, setToggleStates] = useState({}); // Individual toggle states
+
+  const handleToggle = (courseId, newState) => {
+    setToggleStates(prevState => ({
+      ...prevState,
+      [courseId]: newState // Update toggle state for specific course
+    }));
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -34,10 +40,10 @@ function ManagementScreen() {
       <View style={styles.box}>
         <Text style={styles.subtitle}>FunRun</Text>
         <Toggle
-            value={toggleValue}
-            onPress={(newState) => setToggleValue(newState)}
-            leftTitle="On"
-            rightTitle="Off"
+            value={toggleStates['FunRun'] || false}
+            onPress={(newState) => handleToggle('FunRun', newState)}
+            leftTitle="Open"
+            rightTitle="Close"
             trackBar={{
               activeBackgroundColor: "#00272E",
               inActiveBackgroundColor: "#023E48",
@@ -60,10 +66,10 @@ function ManagementScreen() {
             <View style={styles.box} key={index}>
               <Text style={styles.subtitle2}>{course.name}</Text>
               <Toggle
-                  value={toggleValue1}
-                  onPress={(newState) => setToggleValue1(newState)}
-                  leftTitle="On"
-                  rightTitle="Off"
+                  value={toggleStates[course.id] || false} // Use course-specific toggle state
+                  onPress={(newState) => handleToggle(course.id, newState)}
+                  leftTitle="Open"
+                  rightTitle="Close"
                   trackBar={{
                     activeBackgroundColor: "#00272E",
                     inActiveBackgroundColor: "#023E48",
@@ -118,7 +124,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginBottom: 6,
     marginLeft: 15,
-    marginRight: 108,
     marginTop: -8
   },
   subtitle2: {
@@ -129,7 +134,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginBottom: 6,
     marginLeft: 15,
-    marginRight: 20,
     marginTop: -5
   },
   btn: {
@@ -149,9 +153,13 @@ const styles = StyleSheet.create({
     color: '#FFA948'
   },
   box: {
-    flexWrap: 'wrap',
-    height: 50,
+    flexDirection: 'row', 
+    justifyContent: 'space-between',  
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    height: 60,  
     marginBottom: 10,
-    paddingTop: 8
+    borderRadius: 10,
+    paddingVertical: 8,
   }
 })
