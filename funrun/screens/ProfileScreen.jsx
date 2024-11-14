@@ -49,7 +49,7 @@ function ProfileScreen() {
   
           const collectionRef = collection(db, "results");
           
-          const q = query(collectionRef, where("contestantname", "==", user.name));
+          const q = query(collectionRef, where("contestantName", "==", user.name));
   
           const querySnapshot = await getDocs(q);
           const courses = [];
@@ -113,7 +113,7 @@ const handleSignout = () => {
             course.length > 0 ? (
               course.map((results, index) => (
                 <View style={styles.contestantbox} key={index}>
-                  <Text style={styles.number}>{results.coursename}</Text>
+                  <Text style={styles.number}>{results.courseName}</Text>
                   <Text style={styles.number}>{results.time}</Text>
                 </View>
               ))

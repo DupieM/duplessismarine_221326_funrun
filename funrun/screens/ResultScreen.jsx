@@ -70,8 +70,8 @@ const handleGettingOfData_Three = async () => {
           reslutTimesTwo != [] ? (
             reslutTimesTwo.map((times, index) => (
               <View key={index}>
-                <Text style={styles.profname1}>{times.contestantname}</Text>
-                <Text style={styles.profname1}>{times.coursename}</Text>
+                <Text style={styles.profname1}>{times.contestantName}</Text>
+                <Text style={styles.profname1}>{times.courseName}</Text>
                 <Text style={styles.profname1}>{times.time}</Text>
               </View>
             ))
@@ -85,8 +85,8 @@ const handleGettingOfData_Three = async () => {
           reslutTimesThree != [] ? (
             reslutTimesThree.map((times, index) => (
               <View style={styles.places} key={index}>
-                <Text style={styles.profname2}>{times.contestantname}</Text>
-                <Text style={styles.profname2}>{times.coursename}</Text>
+                <Text style={styles.profname2}>{times.contestantName}</Text>
+                <Text style={styles.profname2}>{times.courseName}</Text>
                 <Text style={styles.profname2}>{times.time}</Text>
               </View>
             ))
@@ -104,8 +104,8 @@ const handleGettingOfData_Three = async () => {
           reslutTimes != [] ? (
             reslutTimes.map((times, index) => (
               <View style={styles.contestant} key={index}>
-                <Text style={styles.number}>{times.contestantname}</Text>
-                <Text style={styles.number}>{times.coursename}</Text>
+                <Text style={styles.number}>{times.contestantName}</Text>
+                <Text style={styles.number}>{times.courseName}</Text>
                 <Text style={styles.number}>{times.time}</Text>
               </View>
             ))
