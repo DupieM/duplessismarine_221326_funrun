@@ -66,8 +66,8 @@ function ManagementScreen() {
               height: 35,
             }}
             thumbButton={{
-              width: 40,
-              height: 40,
+              width: 50,
+              height: 50,
               radius: 50,
               activeBackgroundColor: "#1B666B",
               inActiveBackgroundColor: "#FFA948",
@@ -85,19 +85,20 @@ function ManagementScreen() {
                   onPress={(newState) => handleToggle(course.id, newState)}
                   leftTitle="Close"
                   rightTitle="Open"
+                  thumbButton={{
+                    width: 40,
+                    height: 50,
+                    radius: 50,
+                    activeBackgroundColor: "#1B666B",
+                    inActiveBackgroundColor: "#FFA948",
+                  }}
                   trackBar={{
                     activeBackgroundColor: "#00272E",
                     inActiveBackgroundColor: "#023E48",
                     width: 100,
                     height: 35,
                   }}
-                  thumbButton={{
-                    width: 40,
-                    height: 40,
-                    radius: 50,
-                    activeBackgroundColor: "#1B666B",
-                    inActiveBackgroundColor: "#FFA948",
-                  }}
+                  
                 />
               </View>
           ))

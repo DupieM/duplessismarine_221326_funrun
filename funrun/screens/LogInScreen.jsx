@@ -150,11 +150,12 @@ const styles = StyleSheet.create({
   signup: {
     fontFamily:'PoetsenOne',
     textAlign: 'center',
-    color: '#194D10'
+    color: '#194D10',
+    marginLeft: -10
   },
   link: {
     fontFamily:'PoetsenOne',
-    marginLeft: 6,
+    marginLeft: 12,
     textAlign: 'center',
     color: '#194D10',
     textDecorationLine: 'underline',
