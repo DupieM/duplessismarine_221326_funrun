@@ -157,7 +157,7 @@ User are able to view all their sign up information. In addition they will see t
 
 A marshall will be able to view all contestants that entered per course. The marshall can then click on a contestant name as to be able to judge the contestant on the next screen. The marshall can then choose to then either use the life timer or enter the time from a stopwatch. On the life timer the marshall will be able to start the timer, pause the timer or reset the timer.
 
-![image6](readme_images_&_video/Feature_6.png)
+![image6](readme_images_&_video/Slide_16_9_14.png)
 ### Obstacle Course Management
 
 A marshall will be able to change the availability of a course with a toggle. 
