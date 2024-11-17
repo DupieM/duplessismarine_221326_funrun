@@ -1,3 +1,8 @@
+![GitHub repo size](https://img.shields.io/github/repo-size/DupieM/duplessismarine_221326_funrun)
+![GitHub watchers](https://img.shields.io/github/watchers/DupieM/duplessismarine_221326_funrun)
+![GitHub language count](https://img.shields.io/github/languages/count/DupieM/duplessismarine_221326_funrun)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/DupieM/duplessismarine_221326_funrun)
+
 <!-- HEADER SECTION -->
 <h5 align="center" style="padding:0;margin:0;">Mariné du Plessis</h5>
 <h5 align="center" style="padding:0;margin:0;">221326</h5>
