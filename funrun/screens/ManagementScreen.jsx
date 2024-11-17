@@ -66,8 +66,8 @@ function ManagementScreen() {
               height: 35,
             }}
             thumbButton={{
-              width: 50,
-              height: 50,
+              width: 40,
+              height: 40,
               radius: 50,
               activeBackgroundColor: "#1B666B",
               inActiveBackgroundColor: "#FFA948",
@@ -87,7 +87,7 @@ function ManagementScreen() {
                   rightTitle="Open"
                   thumbButton={{
                     width: 40,
-                    height: 50,
+                    height: 40,
                     radius: 50,
                     activeBackgroundColor: "#1B666B",
                     inActiveBackgroundColor: "#FFA948",

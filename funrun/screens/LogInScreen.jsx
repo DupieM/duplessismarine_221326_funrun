@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   },
   link: {
     fontFamily:'PoetsenOne',
-    marginLeft: 12,
+    marginLeft: 6,
     textAlign: 'center',
     color: '#194D10',
     textDecorationLine: 'underline',
